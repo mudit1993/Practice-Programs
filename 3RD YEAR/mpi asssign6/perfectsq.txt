@@ -1,0 +1,80 @@
+Q4-Read a number and check if it is a perfect square or not
+printstr MACRO a
+    PUSH DX
+    MOV AH,09H
+    MOV DX,OFFSET a
+    INT 21H 
+    ;mov dx,13
+    ;int 21h
+    ;mov dx,10
+    ;int 21h
+    pop dx     
+ENDM      
+
+data segment
+  q dw 13,10,'Enter a number$'
+  psqr dw 13,10,'Perfect Square$'
+  npsqr dw 13,10,'Not a perfect square$'
+  enter dw 13,10,'$'
+  num dw 00h  
+    
+data ends    
+code segment
+  assume cs:code,ds:data
+  readnum proc
+      push ax    
+      push bx
+      push cx
+      mov cx,0
+      mov bx,10
+      mov dx,0
+      r1: mov ah,01h
+          int 21h
+          cmp al,13
+          je e1
+          sub al,48
+          mov cl,al
+          mov ax,dx
+          mul bx
+          add ax,cx
+          mov dx,ax
+          jmp r1
+      e1: pop cx
+          pop bx       
+          pop ax
+      ret
+  endp    
+  
+        
+      ;AX and DX contains the number 
+      start:  
+ mov ax,data
+   mov ds,ax
+   printstr q
+   ;printstr enter
+   call readnum
+     mov bx,dx
+     mov cx,0
+ l1: inc cx
+     mov dx,0
+     mov ax,cx
+     mul cx
+     cmp ax,bx
+     jge break
+     jmp l1
+     
+     
+ break: cmp ax,bx    
+        jg no
+        printstr psqr     
+        jmp exit
+ no:   printstr npsqr    
+         jmp exit
+                  
+  ; call printnum
+  ; printstr enter
+ exit:  mov ah,4ch
+   int 21h
+   code ends
+end start
+                 

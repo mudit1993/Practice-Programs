@@ -1,0 +1,109 @@
+Q.1  To search an element in the array using Linear search.
+CODE:
+#include <stdio.h>
+void main()
+{
+int arr[1000],no,i,n,k=0;
+do{
+printf("Enter no. of elements in the array(should be less than 1000)\n");
+scanf("%d",&n);
+}while(n>1000 || n<1);
+printf("Enter %d elements\n",n);
+for(i=0;i<n;i++)
+scanf("%d",&arr[i]);
+printf("Enter a number to be searched\n");
+scanf("%d",&no);
+for(i=0;i<n;i++)
+{
+if(arr[i]==no)
+{ printf("Number is found in position %d\n",i+1);
+k=1;
+//break;
+}
+}
+if(k==0)
+printf("Number not found\n");
+}
+
+-------------------------------------------------------------
+Q.2 To search an element in the 2-dimensional array using Linear search.
+CODE:
+#include <stdio.h>
+void main()
+{
+int arr[10][10];
+int no,i,r,c,k=0,j;;
+printf("Enter no. of rows and columns respectively \n");
+scanf("%d %d",&r,&c);
+printf("enter %d elements",r*c);
+for(i=0;i<r;i++)
+{
+for(j=0;j<c;j++)
+{
+scanf("%d",&arr[i][j]);
+}
+}
+printf("Array is\n");
+for(i=0;i<r;i++)
+{
+for(j=0;j<c;j++)
+printf("%d\t",arr[i][j]);
+printf("\n");
+}
+printf("Enter a number to be searched\n");
+scanf("%d",&no);
+for(i=0;i<r;i++)
+{
+for(j=0;j<c;j++)
+{
+if(arr[i][j]==no)
+{ printf("Number is found in row %d and column %d\n",i+1,j+1);
+k=1;
+//break;
+}
+}
+}
+if(k==0)
+printf("Number not found\n");
+}
+
+-------------------------------------------------------------
+Q.3 To merge two sorted array into one sorted array.
+CODE:
+#include<stdio.h>
+void main()
+{
+int a[100],b[100],c[200];
+int i,j,t,s1,s2;
+printf("Enter no. of elements for array A and B respectively\n");
+scanf("%d%d",&s1,&s2);
+printf("Enter elements in a sorted manner for array A\n");
+for(i=0;i<s1;i++)
+scanf("%d",&a[i]);
+printf("Enter elements in a sorted manner for array B\n");
+for(i=0;i<s2;i++)
+scanf("%d",&b[i]);
+for(i=0;i<(s1+s2);i++)
+{
+if(i<s1)
+c[i]=a[i];
+else
+c[i]=b[i-s1];
+}
+for(i=0;i<(s1+s2);i++)
+{
+for(j=0;j<(s2+s1-i-1);j++)
+{
+if(c[j]>c[j+1])
+{ 
+t=c[j+1];
+c[j+1]=c[j];
+c[j]=t;
+}
+}
+}
+printf("The merged sorted array is\n");
+for(i=0;i<s1+s2;i++)
+printf("%d ",c[i]);
+}
+

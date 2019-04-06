@@ -1,0 +1,77 @@
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+    int t,n,i,j,c,x,y,flag;
+    char b[100][3],a[1000010];
+    scanf("%d",&t);
+    while(t--)
+    {
+        scanf("%d",&n);
+        for(i=0;i<n;i++)
+        {
+            for(j=0;j<2;j++)
+            {
+                scanf("%c",&b[i][j]);
+                if((b[i][j]<33)||(b[i][j]>126))
+                    j--;
+            }
+        }
+        scanf("%s",a);
+        flag=c=0;
+        c=strlen(a);
+        for(i=0;i<c;i++)
+        {
+            for(j=0;j<n;j++)
+            {
+                if(a[i]==b[j][0])
+                {
+                    a[i]=b[j][1];
+                    break;
+                }
+            }
+            if(a[i]=='.')
+                flag=1;
+        }
+        for(i=0;i<c;i++)
+        {
+            if(a[i]!='0')
+            {
+                break;
+            }
+        }
+        x=i;
+        if(!flag)
+        {
+            if(x==c)
+            {
+                printf("0");
+            }
+            else
+            for(x=i;i<c;i++)
+                printf("%c",a[i]);
+            printf("\n");
+        }
+        else
+        {
+            for(i=c-1;i>=0;i--)
+            {
+                if(a[i]!='0')
+                {
+                    y=i;break;
+                }
+            }
+            if(x==y)
+                printf("0");
+            else
+            {
+                for(i=x;i<y;i++)
+                    printf("%c",a[i]);
+                if(a[y]!='.')
+                    printf("%c",a[y]);
+            }
+            printf("\n");
+        }
+    }
+    return(0);
+}

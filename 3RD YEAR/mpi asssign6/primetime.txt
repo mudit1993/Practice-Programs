@@ -1,0 +1,77 @@
+Q3-Read a number and check if it is prime or not
+printstr MACRO a
+    PUSH DX
+    MOV AH,09H
+    MOV DX,OFFSET a
+    INT 21H 
+    ;mov dx,13
+    ;int 21h
+    ;mov dx,10
+    ;int 21h
+    pop dx     
+ENDM      
+
+data segment
+  q dw 13,10,'Enter a number$'
+  prim dw 13,10,'Prime$'
+  nprim dw 13,10,'Not Prime$'
+  enter dw 13,10,'$'
+  num dw 00h  
+    
+data ends    
+code segment
+  assume cs:code,ds:data
+  readnum proc
+      push ax    
+      push bx
+      push cx
+      mov cx,0
+      mov bx,10
+      mov dx,0
+      r1: mov ah,01h
+          int 21h
+          cmp al,13
+          je e1
+          sub al,48
+          mov cl,al
+          mov ax,dx
+          mul bx
+          add ax,cx
+          mov dx,ax
+          jmp r1
+      e1: pop cx
+          pop bx       
+          pop ax
+      ret
+  endp    
+       ;AX and DX contains the number 
+    start:  
+   mov ax,data
+   mov ds,ax
+   printstr q
+   ;printstr enter
+   call readnum
+     mov num,dx
+     mov dx,0
+     mov ax,num
+     mov bx,1 
+ l1:mov dx,00h  
+    mov ax,num
+     inc bx
+     mov cx,bx
+     cmp cx,ax
+     jge prime
+     div cx
+     cmp dx,00h
+     jne l1
+     jmp nprime            
+ 
+ nprime:printstr nprim      
+           jmp exit
+ prime: printstr prim
+ 
+  exit: mov ah,4ch
+   int 21h
+   code ends
+end start
+                 

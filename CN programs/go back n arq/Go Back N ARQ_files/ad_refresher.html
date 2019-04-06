@@ -1,0 +1,67 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <script type="text/javascript">
+      if (!Array.prototype.map) {
+        Array.prototype.map = function(fn, scope) {
+          var accum = [], scope = scope || null;
+          for (var i = 0; i < this.length; i++)  {
+            accum.push(fn.call(scope, this[i], i));
+          }
+          return accum;
+        }
+      }
+      var params = {}; //hash for url fragments
+      var adName; //name of the ad unit
+      var parts = window.location.href.match(/[#&]([^&#=]+)=([^&#=]+)/g);
+      for (var i = 0; i < parts.length; i++) {
+        var keyVal = parts[i].substr(1).split('=');
+        params[keyVal[0]] = unescape(keyVal[1]);
+      }
+
+
+      adName = params['ad_unit'];
+      if(adName) {
+        var writeScript = function(src) {
+          document.write('\x3Cscript type="text/javascript" src="'+src+'">\x3C/script>')
+        };
+
+        var adDivId = 'refresh-ad'; //id of the div we're going to stuff the ad into.
+        writeScript('//www.googletagservices.com/tag/js/gpt.js');
+      }
+    </script><script type="text/javascript" src="Go%20Back%20N%20ARQ_files/gpt.js"></script><iframe style="visibility: hidden; display: none;" src="ad_refresher_data/container.html"></iframe>
+
+    <script type="text/javascript">
+      if(adName) {
+        var scribd_parent = window.parent
+        while(scribd_parent.parent != scribd_parent && !scribd_parent.Scribd)
+          scribd_parent = scribd_parent.parent
+
+        googletag.pubads().set("adsense_page_url", scribd_parent.location.href);
+
+        var size = adName.match(/.*_(\d+)x(\d+)$/)
+          .slice(1)
+          .map(function(f){return parseInt(f);});
+
+        googletag.defineSlot('/1024966/' + adName, size, adDivId).addService(googletag.pubads());
+
+        for (var key in scribd_parent.Scribd.Ads.attributes) {
+          var value = scribd_parent.Scribd.Ads.attributes[key];
+          googletag.pubads().setTargeting(key, value);
+        }
+        googletag.pubads().enableSyncRendering();
+        googletag.enableServices();
+      }
+    </script><script type="text/javascript" src="Go%20Back%20N%20ARQ_files/pubads_impl_57.html"></script>
+  </head>
+  <body style="background-color:transparent;">
+    <div id="refresh-ad">
+      <script type="text/javascript">
+        if (adName) {
+          scribd_parent.Scribd.Ads.RefreshUnit.get[adName].iframeLoaded();
+          googletag.display(adDivId);
+       }
+      </script>
+    </div>
+  
+
+</body></html>

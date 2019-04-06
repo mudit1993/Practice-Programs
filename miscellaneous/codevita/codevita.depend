@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1376399896 source:c:\users\school\desktop\codevita\gems.c
+	<stdio.h>
+	<math.h>
+	<string.h>
+
+1189868556 source:c:\users\school\desktop\codevita\main.c
+	<stdio.h>
+	<stdlib.h>
+
+1376408223 source:c:\users\school\desktop\codevita\gems1.c
+	<stdio.h>
+	<math.h>
+	<string.h>
+

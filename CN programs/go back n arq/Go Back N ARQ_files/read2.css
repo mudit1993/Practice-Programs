@@ -1,0 +1,1243 @@
+/* :asset_packager_compatibility, 'config/asset_packages.yml' @ 1425075658 */
+/* public/stylesheets/jquery.nanoscroller.css @ 1425075658 */
+/** initial setup **/ .nano {position: relative; width: 100%; height: 100%; overflow: hidden}
+.nano .scrolling_content {position: absolute; overflow: scroll; overflow-x: hidden; top: 0; right: 0; bottom: 0; left: 0}
+.nano .scrolling_content:focus {outline: thin dotted}
+.nano .scrolling_content::-webkit-scrollbar {visibility: hidden}
+.has-scrollbar .scrolling_content::-webkit-scrollbar {visibility: visible}
+.nano > .pane {background: rgba(0, 0, 0, 0.25); position: absolute; width: 10px; right: 0; top: 0; bottom: 0; visibility: hidden\9; /* Target only IE7 and IE8 with this hack */ opacity: .01; -webkit-transition: .2s; -moz-transition: .2s; -o-transition: .2s; transition: .2s; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px}
+.nano > .pane > .slider {background: #444; background: rgba(0, 0, 0, 0.5); position: relative; margin: 0 1px; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px}
+.nano:hover > .pane, .pane.active, .pane.flashed {visibility: visible\9; /* Target only IE7 and IE8 with this hack */ opacity: 0.99}
+
+
+/* :files, 'public/stylesheets/shared', ... @ (none) */
+
+
+/* :files, 'app/views', ... @ 1425075610 */
+/* app/views/shared/carousels/paddles.css @ 1425075610 */
+.has_paddles.ui_visible .paddle {-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=100)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100); opacity: 1}
+.ie8 .has_paddles.ui_visible .paddle .paddle_sprite, .ie7 .has_paddles.ui_visible .paddle .paddle_sprite, .ie6 .has_paddles.ui_visible .paddle .paddle_sprite {-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=100)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100); opacity: 1}
+.ie8 .has_paddles:hover .paddle .paddle_sprite, .ie7 .has_paddles:hover .paddle .paddle_sprite, .ie6 .has_paddles:hover .paddle .paddle_sprite {-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=30)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=30); opacity: 0.3}
+.ie8 .has_paddles .paddle .paddle_sprite, .ie7 .has_paddles .paddle .paddle_sprite, .ie6 .has_paddles .paddle .paddle_sprite {-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=0)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0); opacity: 0}
+.ie8 .has_paddles .paddle:hover .paddle_sprite, .ie7 .has_paddles .paddle:hover .paddle_sprite, .ie6 .has_paddles .paddle:hover .paddle_sprite {-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=100)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100); opacity: 1}
+.has_paddles .paddle {-moz-user-select: -moz-none; -webkit-user-select: none; user-select: none; cursor: pointer; position: absolute; width: 69px; z-index: 3; top: 0; bottom: 0; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=0)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0); opacity: 0; -webkit-transition: all 0.25s ease-in-out; -moz-transition: all 0.25s ease-in-out; -ms-transition: all 0.25s ease-in-out; transition: all 0.25s ease-in-out}
+.has_paddles .paddle_left_sprite, .has_paddles .paddle_right_sprite {background: url('https://s1-f.scribdassets.com/images/browse/arrows.png?1425075658') 0 0 no-repeat; width: 27px; height: 42px}
+.has_paddles .paddle_right_sprite {background-position: -27px 0}
+.has_paddles:hover .paddle {-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=30)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=30); opacity: 0.3}
+.has_paddles:hover .paddle:hover {-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=100)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100); opacity: 1}
+.has_paddles .page_left {left: 0}
+.has_paddles .page_left .paddle_sprite {left: 5px}
+.has_paddles .page_right {right: 0}
+.has_paddles .page_right .paddle_sprite {right: 5px}
+.has_paddles.on_first_page .page_left {display: none}
+.has_paddles.on_last_page .page_right {display: none}
+
+
+/* app/views/shared/carousels/document_cell.css @ 1425075610 */
+@-webkit-keyframes popin {0% {opacity: 0; -webkit-transform: scale(0.8); -moz-transform: scale(0.8); -ms-transform: scale(0.8); transform: scale(0.8)}
+75% {-webkit-transform: scale(1.3); -moz-transform: scale(1.3); -ms-transform: scale(1.3); transform: scale(1.3)}
+100% {opacity: 1; -webkit-transform: scale(1); -moz-transform: scale(1); -ms-transform: scale(1); transform: scale(1)}
+}
+@-moz-keyframes popin {0% {opacity: 0; -webkit-transform: scale(0.8); -moz-transform: scale(0.8); -ms-transform: scale(0.8); transform: scale(0.8)}
+75% {-webkit-transform: scale(1.3); -moz-transform: scale(1.3); -ms-transform: scale(1.3); transform: scale(1.3)}
+100% {opacity: 1; -webkit-transform: scale(1); -moz-transform: scale(1); -ms-transform: scale(1); transform: scale(1)}
+}
+@-ms-keyframes popin {0% {opacity: 0; -webkit-transform: scale(0.8); -moz-transform: scale(0.8); -ms-transform: scale(0.8); transform: scale(0.8)}
+75% {-webkit-transform: scale(1.3); -moz-transform: scale(1.3); -ms-transform: scale(1.3); transform: scale(1.3)}
+100% {opacity: 1; -webkit-transform: scale(1); -moz-transform: scale(1); -ms-transform: scale(1); transform: scale(1)}
+}
+@keyframes popin {0% {opacity: 0; -webkit-transform: scale(0.8); -moz-transform: scale(0.8); -ms-transform: scale(0.8); transform: scale(0.8)}
+75% {-webkit-transform: scale(1.3); -moz-transform: scale(1.3); -ms-transform: scale(1.3); transform: scale(1.3)}
+100% {opacity: 1; -webkit-transform: scale(1); -moz-transform: scale(1); -ms-transform: scale(1); transform: scale(1)}
+}
+.has_document_cells .document_cell {width: 145px; white-space: normal; vertical-align: top; font-size: 13px; text-align: left}
+.has_document_cells .document_cell .audiobook_indicator {position: absolute; bottom: 0; text-align: center; color: #fff; padding: 3px 0; left: 0; right: 0; height: 80px; background: -webkit-linear-gradient(to bottom, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.7) 100%); /* For Safari 5.1 to 6.0 */ background: -o-linear-gradient(to bottom, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.7) 100%); /* For Opera 11.1 to 12.0 */ background: -moz-linear-gradient(to bottom, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.7) 100%); /* For Firefox 3.6 to 15 */ background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.7) 100%); /* Standard syntax */ }
+.has_document_cells .document_cell .audiobook_indicator span {font-size: 16px; position: absolute; bottom: 10px; left: 50%; margin-left: -11px}
+.has_document_cells .document_cell.is_book .cell_data, .has_document_cells .document_cell.is_comic_series .cell_data {display: none}
+.has_document_cells .document_cell.is_comic_series .thumb.is_book {box-shadow: none; background-color: transparent}
+.has_document_cells .document_cell.is_comic_series .comic_cover_back_main {position: absolute; box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.28); width: 119px; height: 200px; left: 13px; top: 0; background-color: transparent}
+.has_document_cells .document_cell.is_comic_series .comic_cover_back {position: absolute; box-shadow: 2px 4px 12px 1px rgba(0, 0, 0, 0.28); width: 145px; height: 174px; top: 13px; left: 0; background-color: transparent}
+.has_document_cells .document_cell.is_comic_series .comic_series_cover {position: absolute; width: 145px; height: 200px; cursor: pointer; box-shadow: none}
+.has_document_cells .document_cell.is_comic_series .thumb .overlay {left: 12px; width: 120px}
+.has_document_cells .document_cell.is_comic_series .my_library_indicator {right: 23px}
+.has_document_cells .document_cell.has_flag .my_library_indicator {top: 30px}
+.has_document_cells .document_cell.in_my_library .my_library_indicator {display: block}
+.has_document_cells .document_cell.my_library_context .my_library_indicator {display: none}
+.has_document_cells .document_cell.recently_read.is_audiobook .action_layer .read_icon {display: none}
+.has_document_cells .document_cell.recently_read.is_audiobook .action_layer .play_icon {display: block}
+.has_document_cells .document_cell.recently_read .action_layer .read_icon {display: block}
+.has_document_cells .document_cell .flag {top: 0; bottom: auto; display: block}
+.has_document_cells .document_cell .thumb {position: relative; background-position: 50% 50%; background-repeat: no-repeat; background-color: #E6E8E9; background-size: cover; box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); width: 145px; height: 200px; margin-bottom: 10px; cursor: pointer}
+.has_document_cells .document_cell .thumb:hover .overlay, .has_document_cells .document_cell .thumb.hover .overlay {-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=50)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50); opacity: 0.5}
+.has_document_cells .document_cell .thumb:hover .overlay .sprite, .has_document_cells .document_cell .thumb.hover .overlay .sprite {-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=50)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50); opacity: 0.5}
+.has_document_cells .document_cell .thumb:hover .main_action, .has_document_cells .document_cell .thumb.hover .main_action {-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=100)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100); opacity: 1}
+.has_document_cells .document_cell .thumb.is_book {box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.24), 0px 2px 15px rgba(0, 0, 0, 0.26)}
+.has_document_cells .document_cell .thumb.is_book .shadow_overlay {display: block}
+.has_document_cells .document_cell .thumb .shadow_overlay {display: none}
+.has_document_cells .document_cell .thumb .overlay, .has_document_cells .document_cell .thumb .shadow_overlay, .has_document_cells .document_cell .thumb .doc_link {position: absolute; top: 0; right: 0; bottom: 0; left: 0}
+.has_document_cells .document_cell .thumb .overlay {-webkit-transition: opacity 0.1s ease-in-out; -moz-transition: opacity 0.1s ease-in-out; -ms-transition: opacity 0.1s ease-in-out; transition: opacity 0.1s ease-in-out; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=0)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0); opacity: 0; background: #3d4044}
+.has_document_cells .document_cell .thumb .overlay .sprite {position: absolute; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=0)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0); opacity: 0; left: 50%; top: 50%; margin-left: -23px; margin-top: -18px}
+.has_document_cells .document_cell .thumb .shadow_overlay {background: url('https://s2-f.scribdassets.com/images/petunia/thumbnail_overlay_185x250.png?1425075658') 0 0 no-repeat; background-size: cover}
+.has_document_cells .document_cell .cell_data {border-top: 1px solid #dcd8d4; position: absolute; bottom: 0; top: 65%; left: 0; right: 0; background: #FDFDFD; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=90)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=90); opacity: 0.9}
+.has_document_cells .document_cell .cell_data a {text-decoration: none}
+.has_document_cells .document_cell .document_title {color: #333333; margin: 10px 15px 0 15px; word-wrap: break-word; font-size: 14px; line-height: 15px; overflow: hidden; max-height: 30px}
+.has_document_cells .document_cell .document_title a {color: inherit}
+.has_document_cells .document_cell .document_author {white-space: nowrap; overflow: hidden; text-overflow: ellipsis; position: absolute; bottom: 0; left: 0; right: 0; color: #777777; text-transform: uppercase; font-size: 12px; margin: 0 15px 10px 15px; line-height: 15px}
+.has_document_cells .document_cell .document_author a {color: inherit}
+.has_document_cells .document_cell .my_library_indicator {display: none; position: absolute; top: 10px; z-index: 1; right: 10px; width: 30px; height: 30px; background: white; box-shadow: 0 0 0 1px #1a7bba; color: #1a7bba; font-size: 18px; text-align: center; line-height: 30px; border-radius: 30px}
+.has_document_cells .document_cell .my_library_indicator.animated {-webkit-animation: popin 0.2s ease-in-out; -moz-animation: popin 0.2s ease-in-out; -ms-animation: popin 0.2s ease-in-out; animation: popin 0.2s ease-in-out}
+.has_document_cells .document_cell .action_layer .main_action {position: absolute; left: 50%; top: 50%; color: white; z-index: 1; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=0)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0); opacity: 0; -webkit-transition: opacity 0.2s ease-in-out; -moz-transition: opacity 0.2s ease-in-out; -ms-transition: opacity 0.2s ease-in-out; transition: opacity 0.2s ease-in-out}
+.has_document_cells .document_cell .action_layer .info_icon {font-size: 25px; margin-left: -5px; margin-top: -18px}
+.has_document_cells .document_cell .action_layer .read_icon {display: none; font-size: 40px; margin-left: -20px; margin-top: -16px}
+.has_document_cells .document_cell .action_layer .play_icon {display: none; font-size: 44px; margin-left: -22px; margin-top: -20px}
+.has_document_cells .flag {position: absolute; color: white; font-size: 9px; font-weight: bold; letter-spacing: 1px; border-radius: 0; bottom: -20px; height: 20px; line-height: 21px; left: 0; right: 0; text-align: center}
+.has_document_cells .has_flag .content {margin-top: 30px}
+.has_document_cells .has_flag .flag {display: block}
+.has_document_cells .has_flag.is_purchase .flag {background: #1A7BBA}
+.has_document_cells .has_flag.is_geo_restricted .flag {background: #999999}
+.has_document_cells .has_flag.is_sample .flag {background: #C1C1BE}
+
+
+/* app/views/shared/carousels/paddles.css @ 1425075610 */
+.has_paddles.ui_visible .paddle {-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=100)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100); opacity: 1}
+.ie8 .has_paddles.ui_visible .paddle .paddle_sprite, .ie7 .has_paddles.ui_visible .paddle .paddle_sprite, .ie6 .has_paddles.ui_visible .paddle .paddle_sprite {-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=100)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100); opacity: 1}
+.ie8 .has_paddles:hover .paddle .paddle_sprite, .ie7 .has_paddles:hover .paddle .paddle_sprite, .ie6 .has_paddles:hover .paddle .paddle_sprite {-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=30)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=30); opacity: 0.3}
+.ie8 .has_paddles .paddle .paddle_sprite, .ie7 .has_paddles .paddle .paddle_sprite, .ie6 .has_paddles .paddle .paddle_sprite {-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=0)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0); opacity: 0}
+.ie8 .has_paddles .paddle:hover .paddle_sprite, .ie7 .has_paddles .paddle:hover .paddle_sprite, .ie6 .has_paddles .paddle:hover .paddle_sprite {-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=100)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100); opacity: 1}
+.has_paddles .paddle {-moz-user-select: -moz-none; -webkit-user-select: none; user-select: none; cursor: pointer; position: absolute; width: 69px; z-index: 3; top: 0; bottom: 0; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=0)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0); opacity: 0; -webkit-transition: all 0.25s ease-in-out; -moz-transition: all 0.25s ease-in-out; -ms-transition: all 0.25s ease-in-out; transition: all 0.25s ease-in-out}
+.has_paddles .paddle_left_sprite, .has_paddles .paddle_right_sprite {background: url('https://s1-f.scribdassets.com/images/browse/arrows.png?1425075658') 0 0 no-repeat; width: 27px; height: 42px}
+.has_paddles .paddle_right_sprite {background-position: -27px 0}
+.has_paddles:hover .paddle {-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=30)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=30); opacity: 0.3}
+.has_paddles:hover .paddle:hover {-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=100)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100); opacity: 1}
+.has_paddles .page_left {left: 0}
+.has_paddles .page_left .paddle_sprite {left: 5px}
+.has_paddles .page_right {right: 0}
+.has_paddles .page_right .paddle_sprite {right: 5px}
+.has_paddles.on_first_page .page_left {display: none}
+.has_paddles.on_last_page .page_right {display: none}
+
+
+/* app/views/shared/carousels/document_cell.css @ 1425075610 */
+@-webkit-keyframes popin {0% {opacity: 0; -webkit-transform: scale(0.8); -moz-transform: scale(0.8); -ms-transform: scale(0.8); transform: scale(0.8)}
+75% {-webkit-transform: scale(1.3); -moz-transform: scale(1.3); -ms-transform: scale(1.3); transform: scale(1.3)}
+100% {opacity: 1; -webkit-transform: scale(1); -moz-transform: scale(1); -ms-transform: scale(1); transform: scale(1)}
+}
+@-moz-keyframes popin {0% {opacity: 0; -webkit-transform: scale(0.8); -moz-transform: scale(0.8); -ms-transform: scale(0.8); transform: scale(0.8)}
+75% {-webkit-transform: scale(1.3); -moz-transform: scale(1.3); -ms-transform: scale(1.3); transform: scale(1.3)}
+100% {opacity: 1; -webkit-transform: scale(1); -moz-transform: scale(1); -ms-transform: scale(1); transform: scale(1)}
+}
+@-ms-keyframes popin {0% {opacity: 0; -webkit-transform: scale(0.8); -moz-transform: scale(0.8); -ms-transform: scale(0.8); transform: scale(0.8)}
+75% {-webkit-transform: scale(1.3); -moz-transform: scale(1.3); -ms-transform: scale(1.3); transform: scale(1.3)}
+100% {opacity: 1; -webkit-transform: scale(1); -moz-transform: scale(1); -ms-transform: scale(1); transform: scale(1)}
+}
+@keyframes popin {0% {opacity: 0; -webkit-transform: scale(0.8); -moz-transform: scale(0.8); -ms-transform: scale(0.8); transform: scale(0.8)}
+75% {-webkit-transform: scale(1.3); -moz-transform: scale(1.3); -ms-transform: scale(1.3); transform: scale(1.3)}
+100% {opacity: 1; -webkit-transform: scale(1); -moz-transform: scale(1); -ms-transform: scale(1); transform: scale(1)}
+}
+.has_document_cells .document_cell {width: 145px; white-space: normal; vertical-align: top; font-size: 13px; text-align: left}
+.has_document_cells .document_cell .audiobook_indicator {position: absolute; bottom: 0; text-align: center; color: #fff; padding: 3px 0; left: 0; right: 0; height: 80px; background: -webkit-linear-gradient(to bottom, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.7) 100%); /* For Safari 5.1 to 6.0 */ background: -o-linear-gradient(to bottom, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.7) 100%); /* For Opera 11.1 to 12.0 */ background: -moz-linear-gradient(to bottom, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.7) 100%); /* For Firefox 3.6 to 15 */ background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.7) 100%); /* Standard syntax */ }
+.has_document_cells .document_cell .audiobook_indicator span {font-size: 16px; position: absolute; bottom: 10px; left: 50%; margin-left: -11px}
+.has_document_cells .document_cell.is_book .cell_data, .has_document_cells .document_cell.is_comic_series .cell_data {display: none}
+.has_document_cells .document_cell.is_comic_series .thumb.is_book {box-shadow: none; background-color: transparent}
+.has_document_cells .document_cell.is_comic_series .comic_cover_back_main {position: absolute; box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.28); width: 119px; height: 200px; left: 13px; top: 0; background-color: transparent}
+.has_document_cells .document_cell.is_comic_series .comic_cover_back {position: absolute; box-shadow: 2px 4px 12px 1px rgba(0, 0, 0, 0.28); width: 145px; height: 174px; top: 13px; left: 0; background-color: transparent}
+.has_document_cells .document_cell.is_comic_series .comic_series_cover {position: absolute; width: 145px; height: 200px; cursor: pointer; box-shadow: none}
+.has_document_cells .document_cell.is_comic_series .thumb .overlay {left: 12px; width: 120px}
+.has_document_cells .document_cell.is_comic_series .my_library_indicator {right: 23px}
+.has_document_cells .document_cell.has_flag .my_library_indicator {top: 30px}
+.has_document_cells .document_cell.in_my_library .my_library_indicator {display: block}
+.has_document_cells .document_cell.my_library_context .my_library_indicator {display: none}
+.has_document_cells .document_cell.recently_read.is_audiobook .action_layer .read_icon {display: none}
+.has_document_cells .document_cell.recently_read.is_audiobook .action_layer .play_icon {display: block}
+.has_document_cells .document_cell.recently_read .action_layer .read_icon {display: block}
+.has_document_cells .document_cell .flag {top: 0; bottom: auto; display: block}
+.has_document_cells .document_cell .thumb {position: relative; background-position: 50% 50%; background-repeat: no-repeat; background-color: #E6E8E9; background-size: cover; box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); width: 145px; height: 200px; margin-bottom: 10px; cursor: pointer}
+.has_document_cells .document_cell .thumb:hover .overlay, .has_document_cells .document_cell .thumb.hover .overlay {-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=50)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50); opacity: 0.5}
+.has_document_cells .document_cell .thumb:hover .overlay .sprite, .has_document_cells .document_cell .thumb.hover .overlay .sprite {-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=50)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50); opacity: 0.5}
+.has_document_cells .document_cell .thumb:hover .main_action, .has_document_cells .document_cell .thumb.hover .main_action {-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=100)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100); opacity: 1}
+.has_document_cells .document_cell .thumb.is_book {box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.24), 0px 2px 15px rgba(0, 0, 0, 0.26)}
+.has_document_cells .document_cell .thumb.is_book .shadow_overlay {display: block}
+.has_document_cells .document_cell .thumb .shadow_overlay {display: none}
+.has_document_cells .document_cell .thumb .overlay, .has_document_cells .document_cell .thumb .shadow_overlay, .has_document_cells .document_cell .thumb .doc_link {position: absolute; top: 0; right: 0; bottom: 0; left: 0}
+.has_document_cells .document_cell .thumb .overlay {-webkit-transition: opacity 0.1s ease-in-out; -moz-transition: opacity 0.1s ease-in-out; -ms-transition: opacity 0.1s ease-in-out; transition: opacity 0.1s ease-in-out; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=0)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0); opacity: 0; background: #3d4044}
+.has_document_cells .document_cell .thumb .overlay .sprite {position: absolute; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=0)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0); opacity: 0; left: 50%; top: 50%; margin-left: -23px; margin-top: -18px}
+.has_document_cells .document_cell .thumb .shadow_overlay {background: url('https://s2-f.scribdassets.com/images/petunia/thumbnail_overlay_185x250.png?1425075658') 0 0 no-repeat; background-size: cover}
+.has_document_cells .document_cell .cell_data {border-top: 1px solid #dcd8d4; position: absolute; bottom: 0; top: 65%; left: 0; right: 0; background: #FDFDFD; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=90)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=90); opacity: 0.9}
+.has_document_cells .document_cell .cell_data a {text-decoration: none}
+.has_document_cells .document_cell .document_title {color: #333333; margin: 10px 15px 0 15px; word-wrap: break-word; font-size: 14px; line-height: 15px; overflow: hidden; max-height: 30px}
+.has_document_cells .document_cell .document_title a {color: inherit}
+.has_document_cells .document_cell .document_author {white-space: nowrap; overflow: hidden; text-overflow: ellipsis; position: absolute; bottom: 0; left: 0; right: 0; color: #777777; text-transform: uppercase; font-size: 12px; margin: 0 15px 10px 15px; line-height: 15px}
+.has_document_cells .document_cell .document_author a {color: inherit}
+.has_document_cells .document_cell .my_library_indicator {display: none; position: absolute; top: 10px; z-index: 1; right: 10px; width: 30px; height: 30px; background: white; box-shadow: 0 0 0 1px #1a7bba; color: #1a7bba; font-size: 18px; text-align: center; line-height: 30px; border-radius: 30px}
+.has_document_cells .document_cell .my_library_indicator.animated {-webkit-animation: popin 0.2s ease-in-out; -moz-animation: popin 0.2s ease-in-out; -ms-animation: popin 0.2s ease-in-out; animation: popin 0.2s ease-in-out}
+.has_document_cells .document_cell .action_layer .main_action {position: absolute; left: 50%; top: 50%; color: white; z-index: 1; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=0)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0); opacity: 0; -webkit-transition: opacity 0.2s ease-in-out; -moz-transition: opacity 0.2s ease-in-out; -ms-transition: opacity 0.2s ease-in-out; transition: opacity 0.2s ease-in-out}
+.has_document_cells .document_cell .action_layer .info_icon {font-size: 25px; margin-left: -5px; margin-top: -18px}
+.has_document_cells .document_cell .action_layer .read_icon {display: none; font-size: 40px; margin-left: -20px; margin-top: -16px}
+.has_document_cells .document_cell .action_layer .play_icon {display: none; font-size: 44px; margin-left: -22px; margin-top: -20px}
+.has_document_cells .flag {position: absolute; color: white; font-size: 9px; font-weight: bold; letter-spacing: 1px; border-radius: 0; bottom: -20px; height: 20px; line-height: 21px; left: 0; right: 0; text-align: center}
+.has_document_cells .has_flag .content {margin-top: 30px}
+.has_document_cells .has_flag .flag {display: block}
+.has_document_cells .has_flag.is_purchase .flag {background: #1A7BBA}
+.has_document_cells .has_flag.is_geo_restricted .flag {background: #999999}
+.has_document_cells .has_flag.is_sample .flag {background: #C1C1BE}
+
+
+/* app/views/read2/_seo_shared.css @ 1425075610 */
+@-webkit-keyframes scrolling {0% {-webkit-transform: translate3d(0, 0, 0); -moz-transform: translate3d(0, 0, 0); -ms-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0)}
+100% {-webkit-transform: translate3d(-100%, 0, 0); -moz-transform: translate3d(-100%, 0, 0); -ms-transform: translate3d(-100%, 0, 0); transform: translate3d(-100%, 0, 0)}
+}
+@keyframes scrolling {0% {-webkit-transform: translate3d(0, 0, 0); -moz-transform: translate3d(0, 0, 0); -ms-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0)}
+100% {-webkit-transform: translate3d(-100%, 0, 0); -moz-transform: translate3d(-100%, 0, 0); -ms-transform: translate3d(-100%, 0, 0); transform: translate3d(-100%, 0, 0)}
+}
+.seo_perks {text-transform: uppercase; margin-bottom: 23px; font-size: 16px; color: #8c9d9d}
+.seo_perks .perk {margin-right: 20px}
+.seo_perks .perk .icon {margin-right: 7px}
+.seo_images {margin: 0 15px 0 32px; overflow: hidden; height: 75px; white-space: nowrap}
+.seo_images .scroller {-webkit-transform: translate3d(0, 0, 0); -moz-transform: translate3d(0, 0, 0); -ms-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); -webkit-animation-duration: 40s; -moz-animation-duration: 40s; -ms-animation-duration: 40s; animation-duration: 40s; -webkit-animation-name: scrolling; -moz-animation-name: scrolling; -ms-animation-name: scrolling; animation-name: scrolling; -webkit-animation-iteration-count: infinite; -moz-animation-iteration-count: infinite; -ms-animation-iteration-count: infinite; animation-iteration-count: infinite; -webkit-animation-timing-function: linear; -moz-animation-timing-function: linear; -ms-animation-timing-function: linear; animation-timing-function: linear}
+.seo_images .thumb {width: 55px; height: 75px; margin-right: 24px; position: relative; background-position: 50% 50%; background-repeat: no-repeat; background-color: #E6E8E9; background-size: cover; box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); display: inline-block; zoom: 1; *display: inline}
+.seo_images .thumb:hover .overlay, .seo_images .thumb.hover .overlay {-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=50)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50); opacity: 0.5}
+.seo_images .thumb:hover .overlay .sprite, .seo_images .thumb.hover .overlay .sprite {-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=50)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50); opacity: 0.5}
+.seo_images .thumb:hover .main_action, .seo_images .thumb.hover .main_action {-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=100)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100); opacity: 1}
+.seo_images .thumb.is_book {box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.24), 0px 2px 15px rgba(0, 0, 0, 0.26)}
+.seo_images .thumb.is_book .shadow_overlay {display: block}
+.seo_images .thumb .shadow_overlay {display: none}
+.seo_images .thumb .overlay, .seo_images .thumb .shadow_overlay, .seo_images .thumb .doc_link {position: absolute; top: 0; right: 0; bottom: 0; left: 0}
+.seo_images .thumb .overlay {-webkit-transition: opacity 0.1s ease-in-out; -moz-transition: opacity 0.1s ease-in-out; -ms-transition: opacity 0.1s ease-in-out; transition: opacity 0.1s ease-in-out; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=0)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0); opacity: 0; background: #3d4044}
+.seo_images .thumb .overlay .sprite {position: absolute; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=0)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0); opacity: 0; left: 50%; top: 50%; margin-left: -23px; margin-top: -18px}
+.seo_images .thumb .shadow_overlay {background: url('https://s2-f.scribdassets.com/images/petunia/thumbnail_overlay_185x250.png?1425075658') 0 0 no-repeat; background-size: cover}
+.seo_images .thumb.is_book {box-shadow: 0 0 8px rgba(0, 0, 0, 0.1)}
+.seo_images .thumb:last-child {margin-right: 0px}
+.seo_quotes {text-align: center; color: #666}
+.seo_quotes .quote {display: inline-block; zoom: 1; *display: inline; vertical-align: top; width: 44px; height: 44px; background-image: url('https://s1-f.scribdassets.com/images/read2/quotemark.png?1425075658'); background-size: cover}
+.seo_quotes .quote.quote_right {background-image: url('https://s1-f.scribdassets.com/images/read2/quoteend.png?1425075658')}
+.seo_quotes .quote_body {display: inline-block; zoom: 1; *display: inline; text-align: left; font-size: 18px; font-weight: 200; width: 50%; margin-left: 32px; margin-right: 24px; vertical-align: top; position: relative}
+.seo_quotes .quote_body .single_quote {-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=0)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0); opacity: 0; position: absolute; top: 0; left: 0; right: 0}
+.seo_quotes .quote_body .single_quote.fade_out {-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=0)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0); opacity: 0; -webkit-transition: opacity 1s ease-in-out; -moz-transition: opacity 1s ease-in-out; -ms-transition: opacity 1s ease-in-out; transition: opacity 1s ease-in-out}
+.seo_quotes .quote_body .single_quote.fade_in {-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=100)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100); opacity: 1; -webkit-transition: opacity 1.3s cubic-bezier(1, 0, 0.69, 0); -moz-transition: opacity 1.3s cubic-bezier(1, 0, 0.69, 0); -ms-transition: opacity 1.3s cubic-bezier(1, 0, 0.69, 0); transition: opacity 1.3s cubic-bezier(1, 0, 0.69, 0)}
+.seo_quotes .quote_author {font-weight: bold}
+.seo_dialog {border-radius: 2px}
+.seo_dialog .close_button {margin-top: 10px; margin-right: 10px}
+.seo_dialog .wrapper {width: 550px; box-sizing: border-box; -moz-box-sizing: border-box; font-size: 17px; color: #333}
+.seo_dialog .title {font-weight: 200; font-size: 30px; border-bottom: 1px solid #e9e9e9; margin: 0; padding: 40px 40px 30px 40px}
+.seo_dialog .content {padding-top: 30px}
+.seo_dialog p {margin-top: 0; margin-bottom: 30px}
+.seo_dialog .flat_btn {margin-right: 12px; padding-left: 40px; padding-right: 40px}
+.seo_dialog .flat_btn.yes_btn {font-weight: bold}
+.seo_banner_spacer {display: none}
+
+
+/* app/views/read2/common.css @ 1425075610 */
+.fullscreen_view .global_wrapper {background: none}
+.global_header.above_overlay {position: relative; z-index: 11}
+.global_header .landing_sign_in {color: white}
+.global_header .landing_sign_in .already_a_member {margin-right: 15px}
+.fourgen_highlight {background: #FF5; border-radius: 8px; box-shadow: 0 0 0 10px #ffff55, 0 0 0 25px #e4e400}
+.fourgen_highlight.fourgen_highlight_selected {background: #FFD12C; box-shadow: 0 0 0 10px #ffd12c, 0 0 0 25px #eeba00}
+.between_page_ads {margin-top: 20px; margin-bottom: 40px; position: relative}
+.between_page_ads#between_page_ads_1:after {text-align: left}
+.between_page_ads.is_filled:after {position: absolute; top: 100%; left: 0; right: 0; text-align: right; color: #666; font-size: 11px; content: "Advertisement"}
+.page_missing_explanation_inner {overflow: hidden; border: 1px solid #e1e1e1; background: #f3f3f3; padding: 10px; text-align: right; line-height: 1.5}
+.page_missing_explanation_inner .home_btn {display: inline-block; zoom: 1; *display: inline; box-sizing: border-box; -moz-box-sizing: border-box; -webkit-transition: background 0.1s ease-in-out; -moz-transition: background 0.1s ease-in-out; -ms-transition: background 0.1s ease-in-out; transition: background 0.1s ease-in-out; font-family: Sofia Pro, sans-serif; cursor: pointer; outline: none; border: 0; color: white; text-align: center; padding: 0px 30px; min-width: 90px; background: #1a7bba; line-height: 45px; height: 45px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.025em; font-size: 14px; font-weight: bold; min-width: 140px}
+.page_missing_explanation_inner .home_btn:hover {background: #6ac6e2; text-decoration: none; color: white}
+.page_missing_explanation_inner .home_btn:active {background: #125987}
+@media (max-width: 1200px) {.page_missing_explanation_inner .home_btn {padding: 0 15px}
+}
+.page_missing_explanation_inner .page_missing_explanation_contents {color: #666; float: left; text-align: left}
+.page_missing_explanation_inner .missing_page_number_title {color: #444444}
+.page_missing_explanation_inner .missing_page_number_title.single_row {margin-top: 6px}
+.page_missing_explanation_inner .missing_page_buy_button {margin-top: 2px}
+.milestone_sprite {width: 30px; height: 30px; background-image: url('https://s1-f.scribdassets.com/images/read2/badges.png?1425075658')}
+.milestone_sprite.m100 {background-position: 0 0}
+.milestone_sprite.m1000 {background-position: -30px 0}
+.milestone_sprite.m1000 {background-position: -30px 0}
+.milestone_sprite.m10000 {background-position: -60px 0}
+.milestone_sprite.m100000 {background-position: -90px 0}
+.milestone_sprite.m1000000 {background-position: 0 -30px}
+.milestone_sprite.m10000000 {background-position: -30px -30px}
+.milestone_sprite.mscribd {background-position: -60px -30px}
+.page_arrow_sprite {width: 35px; height: 63px; background-image: url('https://s2-f.scribdassets.com/images/read2/page_arrows.png?1425075658')}
+.page_arrow_sprite.left_arrow {background-position: 0 0}
+.page_arrow_sprite.right_arrow {background-position: -54px 0}
+.between_page_ads, .ad_header {margin-left: auto; margin-right: auto; width: 728px}
+
+
+/* :class_inlines, 'app/views', ... @ 1425075610 */
+/* app/views/shared/reading_progress_notification_lightbox.css @ 1425075610 */
+.autogen_class_views_shared_reading_progress_notification_lightbox {max-width: 600px}
+.autogen_class_views_shared_reading_progress_notification_lightbox .message {padding-bottom: 36px; margin-top: -10px}
+.autogen_class_views_shared_reading_progress_notification_lightbox .actions {border-top: 1px solid #e1e1e1; text-align: right; position: absolute; bottom: 0; left: 0; right: 0; padding: 10px 35px}
+.autogen_class_views_shared_reading_progress_notification_lightbox .actions .flat_btn {margin-left: 25px; width: 150px}
+
+
+/* app/views/shared/carousels/carousel.css @ 1425075610 */
+.autogen_class_views_shared_carousels_carousel {position: relative}
+.autogen_class_views_shared_carousels_carousel:hover .carousel_scrollbar, .autogen_class_views_shared_carousels_carousel.ui_visible .carousel_scrollbar {-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=100)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100); opacity: 1}
+.autogen_class_views_shared_carousels_carousel.dragging .carousel_scrollbar .carousel_scrollbar_thumb, .autogen_class_views_shared_carousels_carousel .carousel_scrollbar .carousel_scrollbar_thumb:hover {height: 9px; top: -4px; background: #6ac6e2}
+.autogen_class_views_shared_carousels_carousel.has_no_scrolling .carousel_scrollbar {display: none}
+.autogen_class_views_shared_carousels_carousel.has_no_scrolling .carousel_scrolling {overflow: hidden}
+.autogen_class_views_shared_carousels_carousel.has_no_scrolling.has_paddles .paddle {display: none}
+.autogen_class_views_shared_carousels_carousel.has_paddles .page_left {left: 40px}
+.autogen_class_views_shared_carousels_carousel.has_paddles .page_right {right: 40px}
+.autogen_class_views_shared_carousels_carousel.has_paddles .paddle {top: auto; bottom: 20px; height: 247px}
+.autogen_class_views_shared_carousels_carousel.has_paddles .paddle .paddle_sprite {position: absolute; top: 50%; margin-top: -23px}
+.autogen_class_views_shared_carousels_carousel .carousel {position: relative; height: 267px; overflow: hidden; margin-left: 70px; margin-right: 70px; white-space: nowrap}
+.autogen_class_views_shared_carousels_carousel .carousel:before, .autogen_class_views_shared_carousels_carousel .carousel:after {position: absolute; width: 15px; top: 0; bottom: 0; content: ""; z-index: 1}
+.autogen_class_views_shared_carousels_carousel .carousel:before {left: 0}
+.autogen_class_views_shared_carousels_carousel .carousel:after {right: 0}
+.autogen_class_views_shared_carousels_carousel .carousel:before {background: -moz-linear-gradient(left, white 0%, white 53%, rgba(255, 255, 255, 0) 100%); background: -webkit-gradient(linear, left top, right top, color-stop(0%, white), color-stop(53%, white), color-stop(100%, rgba(255, 255, 255, 0))); background: -webkit-linear-gradient(left, white 0%, white 53%, rgba(255, 255, 255, 0) 100%); background: -o-linear-gradient(left, white 0%, white 53%, rgba(255, 255, 255, 0) 100%); background: -ms-linear-gradient(left, white 0%, white 53%, rgba(255, 255, 255, 0) 100%); background: linear-gradient(to right, white 0%, white 53%, rgba(255, 255, 255, 0) 100%)}
+.autogen_class_views_shared_carousels_carousel .carousel:after {background: -moz-linear-gradient(left, rgba(255, 255, 255, 0) 0%, white 53%, white 100%); background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(53%, white), color-stop(100%, white)); background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0%, white 53%, white 100%); background: -o-linear-gradient(left, rgba(255, 255, 255, 0) 0%, white 53%, white 100%); background: -ms-linear-gradient(left, rgba(255, 255, 255, 0) 0%, white 53%, white 100%); background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, white 53%, white 100%)}
+.autogen_class_views_shared_carousels_carousel .carousel .object_cell {display: inline-block; vertical-align: top; white-space: normal; font-size: 16px}
+.autogen_class_views_shared_carousels_carousel .carousel .object_cell:last-child {margin-right: 20px}
+.autogen_class_views_shared_carousels_carousel .carousel_scrolling {overflow: hidden; overflow-x: scroll; font-size: 0}
+.autogen_class_views_shared_carousels_carousel .carousel_scrollbar {background: #e1e1e1; height: 1px; position: absolute; bottom: 10px; left: 90px; right: 90px; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=0)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0); opacity: 0; -webkit-transition: all 0.25s ease-in-out; -moz-transition: all 0.25s ease-in-out; -ms-transition: all 0.25s ease-in-out; transition: all 0.25s ease-in-out}
+.autogen_class_views_shared_carousels_carousel .carousel_scrollbar .carousel_scrollbar_thumb {-webkit-transition: background 0.2s ease, top 0.2s ease, height 0.2s ease; -moz-transition: background 0.2s ease, top 0.2s ease, height 0.2s ease; -ms-transition: background 0.2s ease, top 0.2s ease, height 0.2s ease; transition: background 0.2s ease, top 0.2s ease, height 0.2s ease; height: 3px; background: #1a7bba; position: absolute; left: 0; top: -1px}
+.autogen_class_views_shared_carousels_carousel .document_cell {margin: 27px 60px 60px 20px}
+.autogen_class_views_shared_carousels_carousel.events .thumbnail_outer img {border-radius: 3px}
+.autogen_class_views_shared_carousels_carousel.events .carousel {height: 353px}
+.autogen_class_views_shared_carousels_carousel.events .module_edge_right {top: 102px}
+.autogen_class_views_shared_carousels_carousel .carousel_title {margin: 30px 45px 0 45px; font-size: 28px; font-weight: 200; white-space: nowrap; overflow: hidden; text-overflow: ellipsis}
+.autogen_class_views_shared_carousels_carousel .event_data {margin-bottom: 15px}
+.autogen_class_views_shared_carousels_carousel .event_data .newhome_chrome_thumbnail {float: left; min-height: 30px; min-width: 30px}
+.autogen_class_views_shared_carousels_carousel .event_data .text {width: 138px; margin-left: 45px}
+.autogen_class_views_shared_carousels_carousel .event_data .text .username {font-size: 12px; color: #035a7a}
+.autogen_class_views_shared_carousels_carousel .event_data .light_gray {color: #999999; font-size: 12px}
+
+
+/* app/views/shared/carousels/mini_document_carousel.css @ 1425075610 */
+.autogen_class_views_shared_carousels_mini_document_carousel {margin-bottom: 10px}
+.autogen_class_views_shared_carousels_mini_document_carousel .carousel {height: 100px; margin-left: 0; margin-right: 0}
+.autogen_class_views_shared_carousels_mini_document_carousel .item {display: inline-block; zoom: 1; *display: inline; vertical-align: top; margin-bottom: 50px; margin-left: 20px}
+.autogen_class_views_shared_carousels_mini_document_carousel .carousel_scrollbar {left: 20px; right: 20px}
+.autogen_class_views_shared_carousels_mini_document_carousel.has_paddles .paddle {height: 100px; bottom: 0; width: 35px}
+.autogen_class_views_shared_carousels_mini_document_carousel.has_paddles .paddle .sprite {background: none; margin-top: -15px}
+.autogen_class_views_shared_carousels_mini_document_carousel.has_paddles .paddle .sprite.icon {font-size: 30px}
+.autogen_class_views_shared_carousels_mini_document_carousel.has_paddles .page_left {left: -15px}
+.autogen_class_views_shared_carousels_mini_document_carousel.has_paddles .page_right {right: -15px}
+.autogen_class_views_shared_carousels_mini_document_carousel .carousel_title {display: none}
+.autogen_class_views_shared_carousels_mini_document_carousel .document_thumbnail {display: inline-block; zoom: 1; *display: inline; vertical-align: middle; width: 53px; height: 68px; cursor: pointer}
+.autogen_class_views_shared_carousels_mini_document_carousel .document_thumbnail.empty_background {height: 66px; width: 53px; border: 1px solid black; text-align: center; line-height: 66px; color: #bbb; font-size: 14px}
+.autogen_class_views_shared_carousels_mini_document_carousel .document_thumbnail_subtitle {color: #bbb; font-size: 14px; position: absolute; bottom: -14px}
+.autogen_class_views_shared_carousels_mini_document_carousel .vertical_separator {width: 1px; border-right: 1px solid gray; height: 70px; margin-right: 15px; display: inline-block; zoom: 1; *display: inline; vertical-align: middle}
+
+
+/* app/views/shared/carousels/collection_carousel.css @ 1425075610 */
+
+
+
+/* app/views/shared/carousels/square_collection_carousel.css @ 1425075610 */
+.autogen_class_views_shared_carousels_square_collection_carousel {margin-bottom: 30px}
+.autogen_class_views_shared_carousels_square_collection_carousel .carousel {margin: 0 20px 0 20px; height: 220px}
+.autogen_class_views_shared_carousels_square_collection_carousel .carousel:before {background: -moz-linear-gradient(left, #f3f3f3 0%, #f3f3f3 53%, rgba(243, 243, 243, 0) 100%); background: -webkit-gradient(linear, left top, right top, color-stop(0%, #f3f3f3), color-stop(53%, #f3f3f3), color-stop(100%, rgba(243, 243, 243, 0))); background: -webkit-linear-gradient(left, #f3f3f3 0%, #f3f3f3 53%, rgba(243, 243, 243, 0) 100%); background: -o-linear-gradient(left, #f3f3f3 0%, #f3f3f3 53%, rgba(243, 243, 243, 0) 100%); background: -ms-linear-gradient(left, #f3f3f3 0%, #f3f3f3 53%, rgba(243, 243, 243, 0) 100%); background: linear-gradient(to right, #f3f3f3 0%, #f3f3f3 53%, rgba(243, 243, 243, 0) 100%)}
+.autogen_class_views_shared_carousels_square_collection_carousel .carousel:after {background: -moz-linear-gradient(left, rgba(243, 243, 243, 0) 0%, #f3f3f3 53%, #f3f3f3 100%); background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(243, 243, 243, 0)), color-stop(53%, #f3f3f3), color-stop(100%, #f3f3f3)); background: -webkit-linear-gradient(left, rgba(243, 243, 243, 0) 0%, #f3f3f3 53%, #f3f3f3 100%); background: -o-linear-gradient(left, rgba(243, 243, 243, 0) 0%, #f3f3f3 53%, #f3f3f3 100%); background: -ms-linear-gradient(left, rgba(243, 243, 243, 0) 0%, #f3f3f3 53%, #f3f3f3 100%); background: linear-gradient(to right, rgba(243, 243, 243, 0) 0%, #f3f3f3 53%, #f3f3f3 100%)}
+.autogen_class_views_shared_carousels_square_collection_carousel .carousel .collection_cell.object_cell {margin: 30px 28px 50px 20px}
+.autogen_class_views_shared_carousels_square_collection_carousel .carousel .collection_cell.object_cell:last-child {margin-right: 20px}
+.autogen_class_views_shared_carousels_square_collection_carousel.has_paddles .paddle {height: 190px}
+.autogen_class_views_shared_carousels_square_collection_carousel .carousel_scrollbar {left: 40px; right: 40px}
+.autogen_class_views_shared_carousels_square_collection_carousel .paddle.page_right.carousel_next {right: 0}
+.autogen_class_views_shared_carousels_square_collection_carousel .paddle.page_left.carousel_prev {left: 0}
+.autogen_class_views_shared_carousels_square_collection_carousel .create_collection {cursor: pointer}
+
+
+/* app/views/shared/ad_code.css @ 1425075610 */
+.ads_disabled .hidden_on_ads_disabled {display: none}
+
+
+/* app/views/archive_flow/_doc_info.css @ 1425075610 */
+.lightbox .autogen_class_views_archive_flow_doc_info .doc_info {background-color: transparent}
+.autogen_class_views_archive_flow_doc_info .doc_info {overflow: auto; background-color: #ecf3f5}
+.autogen_class_views_archive_flow_doc_info .doc_info .thumbnail {width: 183px; height: 250px}
+.autogen_class_views_archive_flow_doc_info .doc_info .overlay {width: 183px; height: 250px}
+.autogen_class_views_archive_flow_doc_info .doc_info .info {font-family: Sofia Pro, sans-serif; font-family: Helvetica, sans-serif; margin-top: 10px}
+.autogen_class_views_archive_flow_doc_info .doc_info .info h2 {font-weight: normal; line-height: 17px; word-break: break-word; max-width: 300px}
+.autogen_class_views_archive_flow_doc_info .doc_info .info h5 {color: #146c88; font-weight: normal}
+.autogen_class_views_archive_flow_doc_info .doc_info .info p {color: #666; line-height: 20px}
+.autogen_class_views_archive_flow_doc_info .doc_info .info .file_types {color: #b3b3b3}
+.autogen_class_views_archive_flow_doc_info .doc_info .info * {font-size: 13px; width: 360px; margin: 0; padding: 0 0 5px 0}
+
+
+/* app/views/archive_flow/_doc_info.css @ 1425075610 */
+.lightbox .autogen_class_views_archive_flow_doc_info .doc_info {background-color: transparent}
+.autogen_class_views_archive_flow_doc_info .doc_info {overflow: auto; background-color: #ecf3f5}
+.autogen_class_views_archive_flow_doc_info .doc_info .thumbnail {width: 183px; height: 250px}
+.autogen_class_views_archive_flow_doc_info .doc_info .overlay {width: 183px; height: 250px}
+.autogen_class_views_archive_flow_doc_info .doc_info .info {font-family: Sofia Pro, sans-serif; font-family: Helvetica, sans-serif; margin-top: 10px}
+.autogen_class_views_archive_flow_doc_info .doc_info .info h2 {font-weight: normal; line-height: 17px; word-break: break-word; max-width: 300px}
+.autogen_class_views_archive_flow_doc_info .doc_info .info h5 {color: #146c88; font-weight: normal}
+.autogen_class_views_archive_flow_doc_info .doc_info .info p {color: #666; line-height: 20px}
+.autogen_class_views_archive_flow_doc_info .doc_info .info .file_types {color: #b3b3b3}
+.autogen_class_views_archive_flow_doc_info .doc_info .info * {font-size: 13px; width: 360px; margin: 0; padding: 0 0 5px 0}
+
+
+/* app/views/shared/document_popups.css @ 1425075610 */
+.document_popups {text-align: left}
+.document_popups .object_popup.onboarding_book_popup {min-height: 215px; padding: 20px}
+.document_popups .object_popup.onboarding_book_popup .document_description {margin-bottom: 20px}
+.document_popups .object_popup {z-index: 5; position: absolute; top: 0; left: 0; width: 194px; min-height: 248px; margin-left: 3px; font-size: 14px; padding-bottom: 10px; background: white; background: rgba(255, 255, 255, 0.97); border: 1px solid #e1e1e1; border-radius: 3px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.05)}
+.document_popups .object_popup.on_left {margin-left: -3px}
+.document_popups .object_popup.on_left .popup_arrow {left: auto; right: -15px; background-image: url('https://s2-f.scribdassets.com/images/newhome/popup_right_arrow.png?1425075658')}
+.document_popups .object_popup.has_rated .on_rating {display: inline}
+.document_popups .object_popup.has_rated .rating_number {display: none}
+.document_popups .object_popup .popup_right {display: none}
+.document_popups .object_popup .title_row {font-family: Livory, serif; font-size: 18px; line-height: 1.4; max-height: 50px; overflow: hidden}
+.document_popups .object_popup .title_row a {color: #444444}
+.document_popups .object_popup .creator_row {color: #666666; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 0}
+.document_popups .object_popup .creator_row .author:last-child {margin-right: 0}
+.document_popups .object_popup .creator_row, .document_popups .object_popup .star_ratings_row, .document_popups .object_popup .page_count {line-height: 1.6; color: #999999}
+.document_popups .object_popup .star_ratings_row {display: block; margin-top: 6px; margin-bottom: 6px}
+.document_popups .object_popup .on_rating {display: none}
+.document_popups .object_popup .popup_arrow {position: absolute; left: -15px; top: 53%; margin-top: -14px; background: url('https://s1-f.scribdassets.com/images/newhome/popup_left_arrow.png?1425075658') 50% 50% no-repeat; width: 19px; height: 28px}
+.document_popups .object_popup .popup_footer {position: absolute; bottom: 0; left: 0; right: 0}
+.document_popups .object_popup .primary_action {margin: 10px 0 10px 0; white-space: nowrap; text-align: center}
+.document_popups .object_popup .primary_action .flat_btn {display: block}
+.document_popups .document_popup {padding: 14px}
+.document_popups .document_popup.is_view_restricted .view_restriction_msg, .document_popups .onboarding_book_popup.is_view_restricted .view_restriction_msg {display: block}
+.document_popups .document_popup.is_view_restricted .document_description, .document_popups .onboarding_book_popup.is_view_restricted .document_description {min-height: 54px}
+.document_popups .document_popup .view_restriction_msg, .document_popups .onboarding_book_popup .view_restriction_msg {display: none; color: #999999}
+.document_popups .document_popup .document_description, .document_popups .onboarding_book_popup .document_description {margin-top: 6px; margin-bottom: 6px; line-height: 18px; max-height: 127px; min-height: 78px; overflow: hidden; color: #444}
+.document_popups .document_popup .document_description p, .document_popups .onboarding_book_popup .document_description p {font-weight: 400; margin: 0; padding: 0}
+.document_popups .document_popup .recommendation_header, .document_popups .onboarding_book_popup .recommendation_header {background: #eee; height: 50px; position: absolute; top: 0; left: 0; right: 0; border-bottom: 1px solid #e1e1e1; display: none; padding-top: 10px; padding-bottom: 10px; padding-left: 14px; line-height: 22px; max-height: 48px; overflow: hidden}
+.document_popups .document_popup .recommendation_header .recommendation_explanation, .document_popups .onboarding_book_popup .recommendation_header .recommendation_explanation {color: #999999}
+.document_popups .document_popup .recommendation_header .recommendation_explanation a, .document_popups .onboarding_book_popup .recommendation_header .recommendation_explanation a {font-size: 14px; font-family: Livory; font-style: italic}
+.document_popups .document_popup .recommendation_header .not_interested_text, .document_popups .onboarding_book_popup .recommendation_header .not_interested_text {color: #999999; display: none}
+.document_popups .document_popup .recommendation_header .not_interested_btn, .document_popups .onboarding_book_popup .recommendation_header .not_interested_btn {display: none; position: absolute; right: 14px; top: 14px; cursor: pointer; font-size: 20px; color: #c2c4c4}
+.document_popups .document_popup .recommendation_header .not_interested_btn:hover, .document_popups .onboarding_book_popup .recommendation_header .not_interested_btn:hover {color: #f2736e}
+.document_popups .document_popup.has_recommendation .recommendation_explanation, .document_popups .document_popup.has_recommendation .not_interested_btn, .document_popups .document_popup.has_recommendation .recommendation_header, .document_popups .onboarding_book_popup.has_recommendation .recommendation_explanation, .document_popups .onboarding_book_popup.has_recommendation .not_interested_btn, .document_popups .onboarding_book_popup.has_recommendation .recommendation_header {display: block}
+.document_popups .document_popup.has_recommendation .title_row, .document_popups .onboarding_book_popup.has_recommendation .title_row {margin-top: 64px}
+.document_popups .document_popup .document_sub_action, .document_popups .onboarding_book_popup .document_sub_action {margin: 10px 20px 0 20px; line-height: 25px; text-align: center}
+.document_popups .document_popup .save_bookmark_btn .save, .document_popups .onboarding_book_popup .save_bookmark_btn .save {display: inline}
+.document_popups .document_popup .save_bookmark_btn .unsave, .document_popups .onboarding_book_popup .save_bookmark_btn .unsave {display: none}
+.document_popups .document_popup .save_bookmark_btn.saved .save, .document_popups .onboarding_book_popup .save_bookmark_btn.saved .save {display: none}
+.document_popups .document_popup .save_bookmark_btn.saved .unsave, .document_popups .onboarding_book_popup .save_bookmark_btn.saved .unsave {display: inline}
+
+
+/* app/views/shared/dialogs/download_dialog.css @ 1425075610 */
+.autogen_class_views_shared_dialogs_download_dialog .title {display: none}
+.autogen_class_views_shared_dialogs_download_dialog .picker, .autogen_class_views_shared_dialogs_download_dialog .info {display: inline-block; zoom: 1; *display: inline; vertical-align: top}
+.autogen_class_views_shared_dialogs_download_dialog .picker {text-align: center}
+.autogen_class_views_shared_dialogs_download_dialog .info {text-align: left; border-left: 1px solid #e1e1e1; margin-left: 20px; padding: 20px 0px 20px 20px; width: 400px}
+.autogen_class_views_shared_dialogs_download_dialog .info .row {margin-bottom: 8px; text-indent: -2em; padding-left: 2em}
+.autogen_class_views_shared_dialogs_download_dialog .info .buttons {margin-top: 20px; height: 40px; text-align: center}
+.autogen_class_views_shared_dialogs_download_dialog .download_button {width: 300px}
+.autogen_class_views_shared_dialogs_download_dialog .download_success {display: none; color: #798187; font-weight: bold}
+.autogen_class_views_shared_dialogs_download_dialog .download_success .trouble {color: #9FA7B1; margin-top: 8px; font-size: 14px; font-weight: normal}
+.autogen_class_views_shared_dialogs_download_dialog.download_started .download_success {display: block}
+.autogen_class_views_shared_dialogs_download_dialog.download_started.after_download_test {width: 665px}
+.autogen_class_views_shared_dialogs_download_dialog.download_started.after_download_test .content {padding-top: 10px}
+.autogen_class_views_shared_dialogs_download_dialog.download_started.after_download_test .hide_on_suggestion {display: none}
+.autogen_class_views_shared_dialogs_download_dialog.download_started.after_download_test .selected_documents {display: block}
+.autogen_class_views_shared_dialogs_download_dialog.download_started.after_download_test .selected_documents .download_success {text-align: center; margin-bottom: 20px}
+.autogen_class_views_shared_dialogs_download_dialog.download_started.after_download_test .selected_documents .object_grid.document_grid {padding-left: 0}
+.autogen_class_views_shared_dialogs_download_dialog.download_started.after_download_test .selected_documents .object_grid.document_grid .object_cell.document_cell {margin: 0 10px 30px 0}
+.autogen_class_views_shared_dialogs_download_dialog.download_started.after_download_test .picker {display: none}
+.autogen_class_views_shared_dialogs_download_dialog.download_started.after_download_test .info {display: none}
+.autogen_class_views_shared_dialogs_download_dialog.download_started .download_button {display: none}
+.autogen_class_views_shared_dialogs_download_dialog .selected_documents {display: none}
+.autogen_class_views_shared_dialogs_download_dialog .big_download_icon {background: url('https://s1-f.scribdassets.com/images/newdoc/DownloadPageIcon.png?1425075658') 0 0 no-repeat; display: inline-block; zoom: 1; *display: inline; width: 80px; height: 73px}
+.autogen_class_views_shared_dialogs_download_dialog .big_download_icon .icon_text {text-align: center; color: white; font-weight: bold; font-size: 16px; width: 51px; line-height: 25px; margin: 36px 0px 0px 29px; text-shadow: 1px 2px 2px #7e868f}
+.autogen_class_views_shared_dialogs_download_dialog .download_types {padding: 14px 0px}
+.autogen_class_views_shared_dialogs_download_dialog .download_types li {display: inline; padding: 8px; font-weight: bold; font-size: 14px}
+.autogen_class_views_shared_dialogs_download_dialog .download_types li label {cursor: pointer}
+.autogen_class_views_shared_dialogs_download_dialog .object_cell .content {padding: 0}
+.autogen_class_views_shared_dialogs_download_dialog .object_cell .content .title_row {padding: 0; margin: 0}
+.autogen_class_views_shared_dialogs_download_dialog .object_cell .content .title_row .title {padding: 0; margin: 0; font-size: 14px; line-height: 18px; max-height: 54px}
+
+
+/* app/views/shared/grids/object_grid.css @ 1425075610 */
+.object_grid {text-align: left; padding-left: 45px}
+.object_grid .object_cell {display: inline-block; zoom: 1; *display: inline; vertical-align: top; white-space: normal; text-align: left; width: 145px; margin: 0 24px 45px 0}
+.object_grid .object_cell.is_featured .featured_row {display: block}
+.object_grid .object_cell.is_book .content {display: none}
+.object_grid .object_cell .featured_row {display: none}
+.object_grid .object_cell .content .title {color: #022f40}
+.object_grid .object_cell .content .title_row {word-wrap: break-word; overflow: hidden; font-size: 14px; line-height: 18px; max-height: 54px}
+.object_grid .object_cell .content .author_row {font-size: 12px; line-height: 18px}
+.object_grid .object_cell .content .price_row, .object_grid .object_cell .content .featured_row {cursor: default; font-size: 14px; line-height: 18px}
+.object_grid .object_cell .content .price_row {color: #f7931e}
+.object_grid .object_cell .content .featured_row {color: #1a7bba}
+.object_grid .object_cell .content .featured_row .profile_sprite {vertical-align: top}
+.object_grid .object_cell .content .meta_row {font-size: 14px; line-height: 18px; color: #999}
+.object_grid .object_cell .content .meta_row .value {color: #666}
+.object_grid .object_cell.document_cell {margin-bottom: 90px}
+.object_grid .object_cell.document_cell .content {display: none}
+.object_grid .object_cell.document_cell .thumb {margin-bottom: 0}
+.object_grid .object_cell.user_cell {width: 150px; text-align: center; margin-bottom: 60px}
+.object_grid .object_cell.user_cell .thumb {width: 98px; height: 98px; margin: 0 auto; background: #ccc}
+.object_grid .object_cell.user_cell .thumb a, .object_grid .object_cell.user_cell .thumb img {display: block}
+.object_grid .object_cell.user_cell .user_name {margin: 20px 0; word-wrap: break-word}
+.object_grid .object_cell.author_cell {cursor: pointer}
+.object_grid .object_cell.author_cell .thumb {cursor: pointer}
+.object_grid .object_cell.author_cell .thumb .img {width: 100px; height: 100px}
+
+
+/* app/views/shared/grids/grouped_documents_grid.css @ 1425075610 */
+.autogen_class_views_shared_grids_grouped_documents_grid {margin: 0 0 60px 0; padding-top: 30px}
+.autogen_class_views_shared_grids_grouped_documents_grid .loading_screen {display: none}
+.autogen_class_views_shared_grids_grouped_documents_grid.loading_content .loading_screen {display: block; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 255, 255, 0.5)}
+.autogen_class_views_shared_grids_grouped_documents_grid .group_header {font-size: 16px; color: #999999; margin-left: 40px; position: relative; top: -7px}
+.autogen_class_views_shared_grids_grouped_documents_grid .load_more_btn {position: absolute; width: 100%; left: 0}
+
+
+/* app/views/shared/grids/selectable_document_grid.css @ 1425075610 */
+.autogen_class_views_shared_grids_selectable_document_grid .selectable {position: relative}
+.autogen_class_views_shared_grids_selectable_document_grid .select_layer {position: absolute; cursor: pointer; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=0)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0); opacity: 0; -webkit-transition: all 0.4s; -moz-transition: all 0.4s; -ms-transition: all 0.4s; transition: all 0.4s; top: 0; bottom: 0; left: 0; right: 0; z-index: -1}
+.autogen_class_views_shared_grids_selectable_document_grid .select_layer.selected {background: #1a7bba}
+.autogen_class_views_shared_grids_selectable_document_grid .select_layer.selected .check_circle {-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=100)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100); opacity: 1}
+.autogen_class_views_shared_grids_selectable_document_grid .select_layer .check_circle {width: 40px; height: 40px; background: #1a7bba; border-radius: 50%; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=0)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0); opacity: 0; position: absolute; top: 0; left: 0; right: 0; bottom: 0; margin: auto; -webkit-transition: opacity 0.4s; -moz-transition: opacity 0.4s; -ms-transition: opacity 0.4s; transition: opacity 0.4s}
+.autogen_class_views_shared_grids_selectable_document_grid .select_layer .checkmark {position: absolute; top: 0; left: 0; right: 0; bottom: 0; margin: auto; color: white; width: 22px; height: 22px; font-size: 22px; line-height: 22px; -moz-user-select: -moz-none; -webkit-user-select: none; user-select: none}
+.autogen_class_views_shared_grids_selectable_document_grid.edit_mode {/* Obnoxious case where a user removes through the hovercard, and then goes to edit mode and selects book. */ }
+.autogen_class_views_shared_grids_selectable_document_grid.edit_mode .select_layer {z-index: 0; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=80)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80); opacity: 0.8}
+.autogen_class_views_shared_grids_selectable_document_grid.edit_mode .select_layer:hover .check_circle {-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=100)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100); opacity: 1}
+.autogen_class_views_shared_grids_selectable_document_grid.edit_mode .action_layer {display: none}
+.autogen_class_views_shared_grids_selectable_document_grid.edit_mode .removed_from_library.my_library_context .add_to_library.undo_btn {display: none}
+
+
+/* app/views/shared/grids/collection_grid.css @ 1425075610 */
+.autogen_class_views_shared_grids_collection_grid .object_cell {position: relative}
+.autogen_class_views_shared_grids_collection_grid .paperclip {background: url('https://s2-f.scribdassets.com/images/profiles/ill-clip.png?1425075658'); width: 23px; height: 38px; position: absolute; top: 22px; left: 160px}
+
+
+/* app/views/shared/grids/_more_results.css @ 1425075610 */
+.more_results {background-color: #e5e5e5; width: 145px; height: 200px; margin-bottom: 45px; display: inline-block; border: 1px solid #d4d4d4; vertical-align: top; box-sizing: border-box; -moz-box-sizing: border-box}
+.more_results .no_decoration_link {text-decoration: none}
+.more_results .info {display: table-cell; width: 145px; height: 200px; vertical-align: middle; padding-left: 10px; padding-right: 10px; text-align: center}
+.more_results .arrow {word-break: break-word; font-size: 18px; color: #666}
+.more_results .arrow:hover {color: #999}
+.more_results .arrow:after {font-family: 'scribd'; font-size: 12px; margin-left: 2px; content: "\e60d"}
+.more_results .results_count {font-size: 14px; color: #999; height: 20px}
+
+
+/* app/views/shared/grids/document_grid_with_saving.css @ 1425075610 */
+.document_grid .save_bookmark_btn {display: block; text-align: center; margin-top: 12px}
+.document_grid .save_bookmark_btn .save {display: inline-block; zoom: 1; *display: inline}
+.document_grid .save_bookmark_btn .unsave {display: none}
+.document_grid .save_bookmark_btn.saved .save {display: none}
+.document_grid .save_bookmark_btn.saved .unsave {display: inline-block; zoom: 1; *display: inline}
+
+
+/* app/views/shared/carousels/carousel.css @ 1425075610 */
+.autogen_class_views_shared_carousels_carousel {position: relative}
+.autogen_class_views_shared_carousels_carousel:hover .carousel_scrollbar, .autogen_class_views_shared_carousels_carousel.ui_visible .carousel_scrollbar {-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=100)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100); opacity: 1}
+.autogen_class_views_shared_carousels_carousel.dragging .carousel_scrollbar .carousel_scrollbar_thumb, .autogen_class_views_shared_carousels_carousel .carousel_scrollbar .carousel_scrollbar_thumb:hover {height: 9px; top: -4px; background: #6ac6e2}
+.autogen_class_views_shared_carousels_carousel.has_no_scrolling .carousel_scrollbar {display: none}
+.autogen_class_views_shared_carousels_carousel.has_no_scrolling .carousel_scrolling {overflow: hidden}
+.autogen_class_views_shared_carousels_carousel.has_no_scrolling.has_paddles .paddle {display: none}
+.autogen_class_views_shared_carousels_carousel.has_paddles .page_left {left: 40px}
+.autogen_class_views_shared_carousels_carousel.has_paddles .page_right {right: 40px}
+.autogen_class_views_shared_carousels_carousel.has_paddles .paddle {top: auto; bottom: 20px; height: 247px}
+.autogen_class_views_shared_carousels_carousel.has_paddles .paddle .paddle_sprite {position: absolute; top: 50%; margin-top: -23px}
+.autogen_class_views_shared_carousels_carousel .carousel {position: relative; height: 267px; overflow: hidden; margin-left: 70px; margin-right: 70px; white-space: nowrap}
+.autogen_class_views_shared_carousels_carousel .carousel:before, .autogen_class_views_shared_carousels_carousel .carousel:after {position: absolute; width: 15px; top: 0; bottom: 0; content: ""; z-index: 1}
+.autogen_class_views_shared_carousels_carousel .carousel:before {left: 0}
+.autogen_class_views_shared_carousels_carousel .carousel:after {right: 0}
+.autogen_class_views_shared_carousels_carousel .carousel:before {background: -moz-linear-gradient(left, white 0%, white 53%, rgba(255, 255, 255, 0) 100%); background: -webkit-gradient(linear, left top, right top, color-stop(0%, white), color-stop(53%, white), color-stop(100%, rgba(255, 255, 255, 0))); background: -webkit-linear-gradient(left, white 0%, white 53%, rgba(255, 255, 255, 0) 100%); background: -o-linear-gradient(left, white 0%, white 53%, rgba(255, 255, 255, 0) 100%); background: -ms-linear-gradient(left, white 0%, white 53%, rgba(255, 255, 255, 0) 100%); background: linear-gradient(to right, white 0%, white 53%, rgba(255, 255, 255, 0) 100%)}
+.autogen_class_views_shared_carousels_carousel .carousel:after {background: -moz-linear-gradient(left, rgba(255, 255, 255, 0) 0%, white 53%, white 100%); background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(53%, white), color-stop(100%, white)); background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0%, white 53%, white 100%); background: -o-linear-gradient(left, rgba(255, 255, 255, 0) 0%, white 53%, white 100%); background: -ms-linear-gradient(left, rgba(255, 255, 255, 0) 0%, white 53%, white 100%); background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, white 53%, white 100%)}
+.autogen_class_views_shared_carousels_carousel .carousel .object_cell {display: inline-block; vertical-align: top; white-space: normal; font-size: 16px}
+.autogen_class_views_shared_carousels_carousel .carousel .object_cell:last-child {margin-right: 20px}
+.autogen_class_views_shared_carousels_carousel .carousel_scrolling {overflow: hidden; overflow-x: scroll; font-size: 0}
+.autogen_class_views_shared_carousels_carousel .carousel_scrollbar {background: #e1e1e1; height: 1px; position: absolute; bottom: 10px; left: 90px; right: 90px; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=0)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0); opacity: 0; -webkit-transition: all 0.25s ease-in-out; -moz-transition: all 0.25s ease-in-out; -ms-transition: all 0.25s ease-in-out; transition: all 0.25s ease-in-out}
+.autogen_class_views_shared_carousels_carousel .carousel_scrollbar .carousel_scrollbar_thumb {-webkit-transition: background 0.2s ease, top 0.2s ease, height 0.2s ease; -moz-transition: background 0.2s ease, top 0.2s ease, height 0.2s ease; -ms-transition: background 0.2s ease, top 0.2s ease, height 0.2s ease; transition: background 0.2s ease, top 0.2s ease, height 0.2s ease; height: 3px; background: #1a7bba; position: absolute; left: 0; top: -1px}
+.autogen_class_views_shared_carousels_carousel .document_cell {margin: 27px 60px 60px 20px}
+.autogen_class_views_shared_carousels_carousel.events .thumbnail_outer img {border-radius: 3px}
+.autogen_class_views_shared_carousels_carousel.events .carousel {height: 353px}
+.autogen_class_views_shared_carousels_carousel.events .module_edge_right {top: 102px}
+.autogen_class_views_shared_carousels_carousel .carousel_title {margin: 30px 45px 0 45px; font-size: 28px; font-weight: 200; white-space: nowrap; overflow: hidden; text-overflow: ellipsis}
+.autogen_class_views_shared_carousels_carousel .event_data {margin-bottom: 15px}
+.autogen_class_views_shared_carousels_carousel .event_data .newhome_chrome_thumbnail {float: left; min-height: 30px; min-width: 30px}
+.autogen_class_views_shared_carousels_carousel .event_data .text {width: 138px; margin-left: 45px}
+.autogen_class_views_shared_carousels_carousel .event_data .text .username {font-size: 12px; color: #035a7a}
+.autogen_class_views_shared_carousels_carousel .event_data .light_gray {color: #999999; font-size: 12px}
+
+
+/* app/views/shared/carousels/mini_document_carousel.css @ 1425075610 */
+.autogen_class_views_shared_carousels_mini_document_carousel {margin-bottom: 10px}
+.autogen_class_views_shared_carousels_mini_document_carousel .carousel {height: 100px; margin-left: 0; margin-right: 0}
+.autogen_class_views_shared_carousels_mini_document_carousel .item {display: inline-block; zoom: 1; *display: inline; vertical-align: top; margin-bottom: 50px; margin-left: 20px}
+.autogen_class_views_shared_carousels_mini_document_carousel .carousel_scrollbar {left: 20px; right: 20px}
+.autogen_class_views_shared_carousels_mini_document_carousel.has_paddles .paddle {height: 100px; bottom: 0; width: 35px}
+.autogen_class_views_shared_carousels_mini_document_carousel.has_paddles .paddle .sprite {background: none; margin-top: -15px}
+.autogen_class_views_shared_carousels_mini_document_carousel.has_paddles .paddle .sprite.icon {font-size: 30px}
+.autogen_class_views_shared_carousels_mini_document_carousel.has_paddles .page_left {left: -15px}
+.autogen_class_views_shared_carousels_mini_document_carousel.has_paddles .page_right {right: -15px}
+.autogen_class_views_shared_carousels_mini_document_carousel .carousel_title {display: none}
+.autogen_class_views_shared_carousels_mini_document_carousel .document_thumbnail {display: inline-block; zoom: 1; *display: inline; vertical-align: middle; width: 53px; height: 68px; cursor: pointer}
+.autogen_class_views_shared_carousels_mini_document_carousel .document_thumbnail.empty_background {height: 66px; width: 53px; border: 1px solid black; text-align: center; line-height: 66px; color: #bbb; font-size: 14px}
+.autogen_class_views_shared_carousels_mini_document_carousel .document_thumbnail_subtitle {color: #bbb; font-size: 14px; position: absolute; bottom: -14px}
+.autogen_class_views_shared_carousels_mini_document_carousel .vertical_separator {width: 1px; border-right: 1px solid gray; height: 70px; margin-right: 15px; display: inline-block; zoom: 1; *display: inline; vertical-align: middle}
+
+
+/* app/views/shared/carousels/collection_carousel.css @ 1425075610 */
+
+
+
+/* app/views/shared/carousels/square_collection_carousel.css @ 1425075610 */
+.autogen_class_views_shared_carousels_square_collection_carousel {margin-bottom: 30px}
+.autogen_class_views_shared_carousels_square_collection_carousel .carousel {margin: 0 20px 0 20px; height: 220px}
+.autogen_class_views_shared_carousels_square_collection_carousel .carousel:before {background: -moz-linear-gradient(left, #f3f3f3 0%, #f3f3f3 53%, rgba(243, 243, 243, 0) 100%); background: -webkit-gradient(linear, left top, right top, color-stop(0%, #f3f3f3), color-stop(53%, #f3f3f3), color-stop(100%, rgba(243, 243, 243, 0))); background: -webkit-linear-gradient(left, #f3f3f3 0%, #f3f3f3 53%, rgba(243, 243, 243, 0) 100%); background: -o-linear-gradient(left, #f3f3f3 0%, #f3f3f3 53%, rgba(243, 243, 243, 0) 100%); background: -ms-linear-gradient(left, #f3f3f3 0%, #f3f3f3 53%, rgba(243, 243, 243, 0) 100%); background: linear-gradient(to right, #f3f3f3 0%, #f3f3f3 53%, rgba(243, 243, 243, 0) 100%)}
+.autogen_class_views_shared_carousels_square_collection_carousel .carousel:after {background: -moz-linear-gradient(left, rgba(243, 243, 243, 0) 0%, #f3f3f3 53%, #f3f3f3 100%); background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(243, 243, 243, 0)), color-stop(53%, #f3f3f3), color-stop(100%, #f3f3f3)); background: -webkit-linear-gradient(left, rgba(243, 243, 243, 0) 0%, #f3f3f3 53%, #f3f3f3 100%); background: -o-linear-gradient(left, rgba(243, 243, 243, 0) 0%, #f3f3f3 53%, #f3f3f3 100%); background: -ms-linear-gradient(left, rgba(243, 243, 243, 0) 0%, #f3f3f3 53%, #f3f3f3 100%); background: linear-gradient(to right, rgba(243, 243, 243, 0) 0%, #f3f3f3 53%, #f3f3f3 100%)}
+.autogen_class_views_shared_carousels_square_collection_carousel .carousel .collection_cell.object_cell {margin: 30px 28px 50px 20px}
+.autogen_class_views_shared_carousels_square_collection_carousel .carousel .collection_cell.object_cell:last-child {margin-right: 20px}
+.autogen_class_views_shared_carousels_square_collection_carousel.has_paddles .paddle {height: 190px}
+.autogen_class_views_shared_carousels_square_collection_carousel .carousel_scrollbar {left: 40px; right: 40px}
+.autogen_class_views_shared_carousels_square_collection_carousel .paddle.page_right.carousel_next {right: 0}
+.autogen_class_views_shared_carousels_square_collection_carousel .paddle.page_left.carousel_prev {left: 0}
+.autogen_class_views_shared_carousels_square_collection_carousel .create_collection {cursor: pointer}
+
+
+/* app/views/shared/filtered_document_page.css @ 1425075610 */
+.autogen_class_views_shared_filtered_document_page {text-align: left}
+.autogen_class_views_shared_filtered_document_page .page_header {min-height: 100px; padding: 0 45px; position: relative; zoom: 1}
+.autogen_class_views_shared_filtered_document_page .page_header:after {content: ""; display: table; clear: both}
+.autogen_class_views_shared_filtered_document_page .page_header .filter_buttons {margin-top: 20px; padding-bottom: 30px}
+.autogen_class_views_shared_filtered_document_page .page_header h1 .split {display: inline-block; zoom: 1; *display: inline; vertical-align: middle; margin: 0 15px; font-size: 20px; color: #1a7bba}
+.autogen_class_views_shared_filtered_document_page .page_header .header_right {text-align: right; position: absolute; right: 45px; top: 37px}
+.autogen_class_views_shared_filtered_document_page .page_header .search_form .search_input {width: 300px; background: url('https://s1-f.scribdassets.com/images/profiles/blue-mag.png?1425075658') 96% 50% no-repeat}
+.autogen_class_views_shared_filtered_document_page .filter_picker {display: none; border-top: 1px solid #e1e1e1; border-bottom: 1px solid #e1e1e1; padding-top: 30px; background: white}
+.autogen_class_views_shared_filtered_document_page .filter_picker.open {display: block}
+.autogen_class_views_shared_filtered_document_page .filter_picker .filter_picker_inner {padding: 0 45px 0 45px}
+.autogen_class_views_shared_filtered_document_page .filter_picker .filter_group {display: inline-block; zoom: 1; *display: inline; vertical-align: top; margin-right: 55px; margin-bottom: 30px}
+.autogen_class_views_shared_filtered_document_page .filter_picker .filter_label {margin: 0; margin-bottom: 10px; font-weight: bold}
+.autogen_class_views_shared_filtered_document_page .filter_picker .picker_item {display: block; line-height: 1.5; color: #666666}
+.autogen_class_views_shared_filtered_document_page .filter_picker .picker_item.selected {font-weight: bold}
+.autogen_class_views_shared_filtered_document_page .document_drop {margin-top: 40px}
+.autogen_class_views_shared_filtered_document_page .empty_message {margin: 40px 45px; color: #666666; font-size: 28px}
+.autogen_class_views_shared_filtered_document_page .shared_pmp_promo_banner {margin: 30px 45px 0 45px}
+
+
+/* app/views/read2/_activity.css @ 1425075610 */
+.document_activity {margin: 0 40px}
+.document_activity.loading .event_loader {display: block}
+.document_activity.loading .events_footer, .document_activity.loading.has_more .events_footer {display: none}
+.document_activity.comments_disabled .action_picker .addnote_action, .document_activity.comments_disabled .action_picker .review_action, .document_activity.comments_disabled .action_picker .readcast_action {display: none}
+.document_activity.comments_disabled .comment_form.visible {display: none}
+.document_activity.comments_disabled .event_list .reply_comment_btn {display: none}
+.document_activity.has_more .events_footer {display: block}
+.overlay_panel .document_activity {margin: 0 34px 0 34px}
+.document_activity h2 {border-bottom: 1px solid #e1e1e1; padding-bottom: 15px; margin: 0}
+.document_activity .events_footer {display: none}
+.document_activity .document_comment .event_thumb, .document_activity .document_review .event_thumb, .document_activity .document_readcast .event_thumb, .document_activity .comment_form .event_thumb {float: left; width: 30px; height: 30px; background: #B2B2B2; border-radius: 4px}
+.document_activity .document_event {overflow: hidden; border-bottom: 1px solid #e1e1e1; padding-top: 20px; padding-bottom: 15px}
+.document_activity .document_event .event_thumb {float: left; width: 30px; height: 30px}
+.document_activity .document_event .event_content {margin-left: 45px}
+.document_activity .document_event:hover .event_tools, .document_activity .document_event.open .event_tools {-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=100)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100); opacity: 1}
+.document_activity .document_event.depth_3 .event_tools .reply_comment_btn {display: none}
+.document_activity .document_event .event_tools {-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=0)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0); opacity: 0; -webkit-transition: opacity 0.1s ease-in-out; -moz-transition: opacity 0.1s ease-in-out; -ms-transition: opacity 0.1s ease-in-out; transition: opacity 0.1s ease-in-out; float: right}
+.document_activity .document_event .event_tools a {margin-left: 20px}
+.document_activity .document_event .event_tools a:hover {text-decoration: none}
+.document_activity .document_event .event_tools a .icon {margin-right: 4px}
+.document_activity .document_event .event_body {margin-top: 15px}
+.document_activity .document_event .event_actions {margin-top: 10px}
+.document_activity .document_event .event_actions .score_text {margin-right: 10px; color: #666; font-size: 13px}
+.document_activity .document_event .event_actions a {text-decoration: none}
+.document_activity .document_event .event_actions .icon {vertical-align: middle; color: #999999}
+.document_activity .document_event .event_actions .selected .icon {color: #146c88}
+.document_activity .document_event .event_actions .upvote_item_btn {margin-right: 10px; margin-top: 10px}
+.document_activity .document_event .event_data {color: #666666}
+.document_activity .document_event .event_data .data_divider {margin: 0 10px; color: #cccccc}
+.document_activity .document_comment.open .reply_comment_btn {color: #022f40}
+.document_activity .document_milestone .event_content, .document_activity .document_readcast .event_content {margin-top: 6px}
+.document_activity .document_milestone .primary, .document_activity .document_readcast .primary {color: #1a7bba}
+.document_activity .document_review .event_rating {color: #E6E6E6; margin-bottom: 15px}
+.document_activity .document_review .event_rating .rating_on {color: #1a7bba}
+.document_activity .document_review .event_rating .rating_label {margin-left: 10px; color: #666666}
+.document_activity .child_comments {margin-left: 45px}
+.document_activity .events_footer {margin-top: 20px; margin-bottom: 40px}
+.document_activity .comment_form {overflow: hidden; padding-top: 25px; padding-bottom: 25px; border-bottom: 1px solid #e1e1e1; display: none}
+.document_activity .comment_form .on_note, .document_activity .comment_form .on_reply, .document_activity .comment_form .on_review, .document_activity .comment_form .on_readcast {display: none}
+.document_activity .comment_form.loading .submit_btn {display: none}
+.document_activity .comment_form.loading .loader {display: inline-block; zoom: 1; *display: inline}
+.document_activity .comment_form.visible {display: block}
+.document_activity .comment_form.reply_form {margin-left: 45px; border-bottom: 0; padding-bottom: 20px; display: block}
+.document_activity .comment_form.reply_form div.on_reply {display: block}
+.document_activity .comment_form.reply_form span.on_reply {display: inline}
+.document_activity .comment_form.activity_review_form .rating_picker {display: block}
+.document_activity .comment_form.activity_review_form div.on_review {display: block}
+.document_activity .comment_form.activity_review_form span.on_review {display: inline}
+.document_activity .comment_form.activity_note_form div.on_note {display: block}
+.document_activity .comment_form.activity_note_form span.on_note {display: inline}
+.document_activity .comment_form.activity_readcast_form div.on_readcast {display: block}
+.document_activity .comment_form.activity_readcast_form span.on_readcast {display: inline}
+.document_activity .comment_form.has_error .comment_form_error {-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=100)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100); opacity: 1}
+.document_activity .comment_form .rating_picker {display: none}
+.document_activity .comment_form .comment_form_inner {margin-left: 45px}
+.document_activity .comment_form .comment_form_error {-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=0)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0); opacity: 0; -webkit-transition: opacity 0.1s ease-in-out; -moz-transition: opacity 0.1s ease-in-out; -ms-transition: opacity 0.1s ease-in-out; transition: opacity 0.1s ease-in-out; color: #f2736e; margin-right: 20px}
+.document_activity .comment_form .comment_form_error .icon {vertical-align: middle; margin-right: 4px}
+.document_activity .comment_form .form_buttons {text-align: right; height: 16px; margin-top: 10px}
+.document_activity .comment_form .form_buttons .privacy_settings {float: left; color: #A5B0B6; font-size: 12px}
+.document_activity .comment_form .form_buttons .privacy_settings .icon {font-size: 6px; vertical-align: middle; margin-left: 2px}
+.document_activity .comment_form textarea {height: 66px; width: 100%}
+.document_activity .rereview_message {display: none; padding-top: 25px; padding-bottom: 25px; padding-left: 45px; border-bottom: 1px solid #e1e1e1}
+.document_activity .rereview_message.visible {display: block}
+.document_activity .action_picker {border-bottom: 1px solid #e1e1e1; height: 57px; vertical-align: top}
+.document_activity .action_picker .toggle_filters_btn {margin-top: 6px}
+.document_activity .action_picker .action_buttons {float: right; margin-right: 15px}
+.document_activity .action_picker .action_btn {display: inline-block; zoom: 1; *display: inline; vertical-align: top; margin-left: 15px; padding-left: 15px; border-left: 1px solid #e1e1e1; color: #666666; height: 57px; line-height: 57px}
+.document_activity .action_picker .action_btn:active {position: relative; top: 1px}
+.document_activity .action_picker .action_btn:hover {color: #1a7bba; text-decoration: none}
+.document_activity .action_picker .action_btn.selected {color: #022f40}
+.document_activity .action_picker .action_btn .icon {margin-right: 7px}
+.document_activity .event_filters {display: none; padding: 15px 0}
+.document_activity .event_filters .filter_group {display: inline-block; zoom: 1; *display: inline; vertical-align: top; margin-right: 20px}
+.document_activity .event_filters .filter_label {margin: 0; margin-bottom: 10px; font-weight: bold}
+.document_activity .event_filters .picker_item {display: block; line-height: 1.5; color: #666666}
+.document_activity .event_filters .picker_item.selected {font-weight: bold; cursor: default}
+.document_activity .event_filters .picker_item.selected:hover {text-decoration: none}
+.document_activity .rating_picker {margin-bottom: 5px}
+.document_activity .rating_picker .star_icon {color: #e6e6e6}
+.document_activity .rating_picker .star_icon.selected {color: #1a7bba}
+.document_activity .rating_picker:hover .star_icon {color: #e6e6e6}
+.document_activity .rating_picker:hover .star_icon.highlight {color: #1a7bba}
+.document_activity .rating_picker .rating_label {margin-left: 10px; display: none; color: #666666}
+.document_activity .rating_picker.has_value .rating_label {display: inline}
+.document_activity .event_lists {margin-top: 10px}
+.document_activity .event_list .empty_message {margin: 20px 0; font-size: 14px; color: #666666}
+.document_activity .event_loader {display: none; margin: 20px 0; text-align: center}
+.document_activity .event_loader .loader {display: inline-block; zoom: 1; *display: inline}
+
+
+/* app/views/read2/_banner.css @ 1425075610 */
+.doc_banner {height: 125px; overflow: hidden; position: relative; color: #666666}
+.doc_banner .geo_restricted {display: none}
+.doc_banner .geo_restricted p {font-size: 14px}
+.doc_banner h1, .doc_banner h2 {color: #444444; font-size: 22px; line-height: 22px; font-weight: 200; margin: 15px 0 10px 0}
+.doc_banner.collapsed {height: 60px}
+.doc_banner.collapsed h1, .doc_banner.collapsed h2 {font-size: 20px; line-height: 20px; margin-top: 20px}
+.doc_banner.collapsed .toggle_banner_btn {top: 22px}
+.doc_banner.collapsed .hide_if_collapsed {display: none}
+.doc_banner.collapsed .action_area {top: 9px}
+.doc_banner.stuck {position: fixed; left: 0; right: 0; bottom: 0; z-index: 8}
+.doc_banner .banner_wrapper {padding: 0px 50px; height: 100%; background: #fafafa; border-top: 1px solid #e1e1e1}
+.doc_banner .message_area {width: 750px; float: left; font-size: 16px; text-align: left; max-height: 125px}
+@media (max-width: 1135px) {.doc_banner .message_area {width: 650px}
+.doc_banner .message_area h1 {font-size: 18px}
+}
+.doc_banner .message_area .hide_if_collapsed {margin-right: 50px}
+.doc_banner .action_area {position: absolute; top: 17px; right: 40px; text-align: right}
+.doc_banner .also_buy {font-size: 14px; margin-top: 10px; white-space: nowrap}
+.doc_banner .also_buy .buy_doc_btn {margin-left: 10px; height: 40px; line-height: 40px; padding: 0 15px}
+.doc_banner .toggle_banner_btn {width: 20px; height: 20px; position: absolute; top: 15px; left: 15px; background-image: url('https://s2-f.scribdassets.com/images/icons/icon_openclose-blue.png?1425075658'); background-size: 41px 41px; background-position: 20px 0px}
+.doc_banner .toggle_banner_btn:hover {cursor: pointer; background-position: 20px 20px}
+.doc_banner.collapsed .toggle_banner_btn {background-position: 0px 0px}
+.doc_banner.collapsed .toggle_banner_btn:hover {background-position: 0px 20px}
+.doc_banner .more_info_row {margin-top: 10px}
+.doc_banner .devices_lockup {display: inline-block; zoom: 1; *display: inline; vertical-align: middle}
+.doc_banner .learn_more {display: inline-block; zoom: 1; *display: inline; vertical-align: middle; margin-left: 25px}
+.doc_banner .learn_more a {color: #f7943b}
+.doc_banner .learn_more img {margin-top: -1px; margin-right: 5px}
+.doc_banner .primary_action_btn {width: 270px}
+.doc_banner .primary_action_btn .icon-download-button {margin-right: 10px}
+.doc_banner .hide_if_collapsed {display: block}
+
+
+/* app/views/read2/dialogs/embed_dialog.css @ 1425075610 */
+.autogen_class_views_read2_dialogs_embed_dialog .embed_header, .autogen_class_views_read2_dialogs_embed_dialog .copy_link {border-bottom: 1px solid #e2e2e2}
+.autogen_class_views_read2_dialogs_embed_dialog .embed_header h2 {font-size: 18px; font-weight: normal; color: #022f40; margin: 15px 30px}
+.autogen_class_views_read2_dialogs_embed_dialog .copy_link .input_row {display: block; margin: 20px 0 10px 0}
+.autogen_class_views_read2_dialogs_embed_dialog .copy_link .copy_link_label {display: inline-block; zoom: 1; *display: inline; color: #022f40; font-size: 12px; width: 65px; margin-right: 10px; margin-bottom: 10px; margin-left: 32px}
+.autogen_class_views_read2_dialogs_embed_dialog .copy_link .link_options {margin: 10px 30px 20px 107px}
+.autogen_class_views_read2_dialogs_embed_dialog .copy_link .link_options label {color: #666; font-size: 13px; margin-right: 20px}
+.autogen_class_views_read2_dialogs_embed_dialog .copy_link .link_options label span {vertical-align: middle}
+.autogen_class_views_read2_dialogs_embed_dialog .copy_link .link_options input {vertical-align: middle; margin-right: 4px}
+.autogen_class_views_read2_dialogs_embed_dialog .copy_link .document_url_input {width: 500px}
+.autogen_class_views_read2_dialogs_embed_dialog .content {padding: 0}
+.autogen_class_views_read2_dialogs_embed_dialog .left_col {min-height: 600px; width: 360px; float: left; border-right: 1px solid #e2e2e2}
+.autogen_class_views_read2_dialogs_embed_dialog .right_col {margin: 0 auto; margin-left: 360px; overflow: hidden}
+.autogen_class_views_read2_dialogs_embed_dialog .doc_preview {padding: 10px; min-width: 400px; overflow: hidden}
+.autogen_class_views_read2_dialogs_embed_dialog .control_container {position: relative; padding: 20px 10px 20px 32px; border-bottom: 1px solid #e2e2e2}
+.autogen_class_views_read2_dialogs_embed_dialog .control_container.top {padding-bottom: 30px}
+.autogen_class_views_read2_dialogs_embed_dialog .control_container.darker {background: #f2f2f2}
+.autogen_class_views_read2_dialogs_embed_dialog .control_container.bottom {border-bottom: 0}
+.autogen_class_views_read2_dialogs_embed_dialog .control_container .embed_control {margin-left: 100px}
+.autogen_class_views_read2_dialogs_embed_dialog .control_container .control_name {color: #022f40; font-size: 12px; float: left; text-align: left; width: 100px}
+.autogen_class_views_read2_dialogs_embed_dialog .note {position: absolute; bottom: 7px; right: 12px; color: #333; font-size: 9px}
+.autogen_class_views_read2_dialogs_embed_dialog .code_input {border: 1px solid #909ca4; border-radius: 2px 0 0 2px; box-shadow: inset 0 1px 2px -1px #aaaaaa; font-size: 12px; padding: 5px; height: 140px; width: 300px; resize: none; color: gray; overflow-y: hidden}
+.autogen_class_views_read2_dialogs_embed_dialog .code_input_container .control_name {width: auto; margin-bottom: 15px}
+.autogen_class_views_read2_dialogs_embed_dialog .toggle_options {font-size: 11px; text-align: left; -moz-user-select: -moz-none; -webkit-user-select: none; user-select: none}
+.autogen_class_views_read2_dialogs_embed_dialog .toggle_options label {color: #666}
+.autogen_class_views_read2_dialogs_embed_dialog .toggle_options .active {color: #666}
+.autogen_class_views_read2_dialogs_embed_dialog .toggle_options .inactive {color: #1FA3D6; cursor: pointer}
+.autogen_class_views_read2_dialogs_embed_dialog .toggle_options:hover {text-decoration: none}
+.autogen_class_views_read2_dialogs_embed_dialog .toggle_options.left {float: left}
+.autogen_class_views_read2_dialogs_embed_dialog .toggle_options.right {float: right}
+.autogen_class_views_read2_dialogs_embed_dialog .label {text-align: left; font-size: 11px; color: #666}
+.autogen_class_views_read2_dialogs_embed_dialog .size_picker {position: relative; width: 400px; height: 120px; padding: 0; margin: 0}
+.autogen_class_views_read2_dialogs_embed_dialog .size_picker li {float: left; padding: 1px; padding: 8px; margin-right: 2px}
+.autogen_class_views_read2_dialogs_embed_dialog .size_picker li.active {background: #e6eef1; padding: 7px}
+.autogen_class_views_read2_dialogs_embed_dialog .size_picker .thumb {background: #CBD1D7; border: 1px solid #b0b5ba; margin-top: 8px}
+.autogen_class_views_read2_dialogs_embed_dialog .custom_size {margin-top: 10px; margin-left: 16px}
+.autogen_class_views_read2_dialogs_embed_dialog .custom_size .inputs label {display: block}
+.autogen_class_views_read2_dialogs_embed_dialog .custom_size .inputs .label {display: inline-block; zoom: 1; *display: inline; width: 40px; text-align: right; margin-right: 10px}
+.autogen_class_views_read2_dialogs_embed_dialog .custom_size .custom_width, .autogen_class_views_read2_dialogs_embed_dialog .custom_size .custom_height {width: 40px; margin-bottom: 5px; padding-top: 5px; padding-bottom: 5px}
+.autogen_class_views_read2_dialogs_embed_dialog .custom_size .unit {font-size: 12px; color: #666}
+.autogen_class_views_read2_dialogs_embed_dialog .misc_options {text-align: left}
+.autogen_class_views_read2_dialogs_embed_dialog .misc_options label {display: block; margin-bottom: 5px}
+.autogen_class_views_read2_dialogs_embed_dialog .misc_options input[type="checkbox"] {vertical-align: middle}
+.autogen_class_views_read2_dialogs_embed_dialog .misc_options .label, .autogen_class_views_read2_dialogs_embed_dialog .misc_options select {font-size: 13px}
+.autogen_class_views_read2_dialogs_embed_dialog .misc_options .label {margin-right: 4px}
+.autogen_class_views_read2_dialogs_embed_dialog .misc_options .label.right_label {margin-left: 4px; margin-right: 0}
+.autogen_class_views_read2_dialogs_embed_dialog .misc_options .starting_page {width: 30px; padding-top: 5px; padding-bottom: 5px}
+.autogen_class_views_read2_dialogs_embed_dialog .size_picker {list-style: none}
+.autogen_class_views_read2_dialogs_embed_dialog .sub {color: #999}
+
+
+/* app/views/read2/dialogs/flag_doc_dialog.css @ 1425075610 */
+.autogen_class_views_read2_dialogs_flag_doc_dialog {width: 600px}
+.autogen_class_views_read2_dialogs_flag_doc_dialog.loading .loader {display: inline-block; zoom: 1; *display: inline; margin-left: 10px}
+.autogen_class_views_read2_dialogs_flag_doc_dialog.loading .close_link {display: none}
+.autogen_class_views_read2_dialogs_flag_doc_dialog p {margin: 0 0 20px 0}
+.autogen_class_views_read2_dialogs_flag_doc_dialog .flag_list label {display: block; margin-bottom: 10px}
+.autogen_class_views_read2_dialogs_flag_doc_dialog .close_link {font-size: 13px; margin-left: 10px}
+
+
+/* app/views/read2/dialogs/print_dialog.css @ 1425075610 */
+.autogen_class_views_read2_dialogs_print_dialog {width: 550px}
+.autogen_class_views_read2_dialogs_print_dialog p {margin: 0 0 40px 0; line-height: 1.3; font-size: 13px}
+
+
+/* app/views/read2/dialogs/readcast_history_dialog.css @ 1425075610 */
+.autogen_class_views_read2_dialogs_readcast_history_dialog {width: 600px}
+.autogen_class_views_read2_dialogs_readcast_history_dialog .content {margin: 0; padding: 0; border-top: 0}
+.autogen_class_views_read2_dialogs_readcast_history_dialog .items {margin: 0; padding: 0; border: 1px solid #dfdfdf; border-width: 1px 0}
+.autogen_class_views_read2_dialogs_readcast_history_dialog .no_items {padding: 9px 40px; border: 1px solid #dfdfdf; border-width: 1px 0; text-align: center}
+.autogen_class_views_read2_dialogs_readcast_history_dialog .item {zoom: 1; position: relative; padding: 9px 40px; border-top: 1px solid #dfdfdf; font-size: 14px}
+.autogen_class_views_read2_dialogs_readcast_history_dialog .item:after {content: ""; display: table; clear: both}
+.autogen_class_views_read2_dialogs_readcast_history_dialog .item:hover {background-color: #ebf0f7}
+.autogen_class_views_read2_dialogs_readcast_history_dialog .item:hover .delete_button {display: block}
+.autogen_class_views_read2_dialogs_readcast_history_dialog .item:first-child {border: 0}
+.autogen_class_views_read2_dialogs_readcast_history_dialog .item .item_title {display: block; float: left; overflow: hidden; width: 300px; text-overflow: ellipsis; white-space: nowrap}
+.autogen_class_views_read2_dialogs_readcast_history_dialog .item .plus_facebook {margin-left: 3px; color: #999}
+.autogen_class_views_read2_dialogs_readcast_history_dialog .item .item_date, .autogen_class_views_read2_dialogs_readcast_history_dialog .item.deleted .status {float: right; margin-right: 40px; color: #999}
+.autogen_class_views_read2_dialogs_readcast_history_dialog .item.deleted {background-color: #ffdedf}
+.autogen_class_views_read2_dialogs_readcast_history_dialog .item.deleted .item_title {color: #fb4550; font-style: italic}
+.autogen_class_views_read2_dialogs_readcast_history_dialog .item.deleted .status {color: #fb4550; font-style: italic}
+.autogen_class_views_read2_dialogs_readcast_history_dialog .delete_button {position: absolute; top: 0; right: 31px; display: none; padding: 15px 10px}
+.autogen_class_views_read2_dialogs_readcast_history_dialog .delete_button .sprite {text-indent: -119988px; overflow: hidden; background: url('https://s1-f.scribdassets.com/images/newhome/icon-sprite.png?1425075658') -169px -68px no-repeat; width: 11px; height: 10px}
+.autogen_class_views_read2_dialogs_readcast_history_dialog .footer {padding: 12px 40px; color: #999; text-align: right; font-size: 14px}
+.autogen_class_views_read2_dialogs_readcast_history_dialog .footer_status {display: inline}
+.autogen_class_views_read2_dialogs_readcast_history_dialog .paginator {display: inline}
+.autogen_class_views_read2_dialogs_readcast_history_dialog .actions {text-align: right; margin: 10px 40px 20px 40px}
+
+
+/* app/views/read2/errors/_base.css @ 1425075610 */
+.autogen_class_views_read2_errors_base {text-align: center}
+.autogen_class_views_read2_errors_base .converting_column {display: inline-block; zoom: 1; *display: inline; text-align: left}
+.autogen_class_views_read2_errors_base h1, .autogen_class_views_read2_errors_base h2 {font-weight: normal}
+.autogen_class_views_read2_errors_base h1 {width: 728px; margin: 0 0 30px 0}
+.autogen_class_views_read2_errors_base h2 {background: #EEF2F4; color: #666; text-shadow: 1px 1px 0px white; font-size: 24px; padding: 10px 20px; margin: 0}
+.autogen_class_views_read2_errors_base .fake_page {margin: 20px 0px; background: white}
+.autogen_class_views_read2_errors_base .fake_page .inner {padding: 20px; line-height: 1.5}
+.autogen_class_views_read2_errors_base .fake_page .inner ol, .autogen_class_views_read2_errors_base .fake_page .inner li {list-style: decimal; margin-left: 20px; margin-bottom: 10px}
+.autogen_class_views_read2_errors_base .fake_page .formats {padding-top: 5px; padding-bottom: 5px; color: #666}
+.autogen_class_views_read2_errors_base .sub {color: #818181}
+.autogen_class_views_read2_errors_base #leaderboard_ad_gam {width: 728px; margin: 45px auto}
+
+
+/* app/views/read2/errors/_base.rb:10 @ 1425075610 */
+.autogen_class_views_read2_errors_base .outer_page {position: relative}
+.autogen_class_views_read2_errors_base .outer_page .b_tl {background-image: url('https://s1-f.scribdassets.com/images/newdoc/page_border/tl.png?1425075658'); background-position: top left; background-repeat: no-repeat; position: absolute; height: 3px; width: 3px; top: -3px; left: -3px}
+.autogen_class_views_read2_errors_base .outer_page .b_tr {background-image: url('https://s2-f.scribdassets.com/images/newdoc/page_border/tr.png?1425075658'); background-position: top right; background-repeat: no-repeat; position: absolute; height: 3px; width: 3px; top: -3px; right: -3px}
+.autogen_class_views_read2_errors_base .outer_page .b_br {background-image: url('https://s1-f.scribdassets.com/images/newdoc/page_border/br.png?1425075658'); background-position: bottom right; background-repeat: no-repeat; position: absolute; height: 3px; width: 3px; bottom: -3px; right: -3px}
+.autogen_class_views_read2_errors_base .outer_page .b_bl {background-image: url('https://s2-f.scribdassets.com/images/newdoc/page_border/bl.png?1425075658'); background-position: bottom left; background-repeat: no-repeat; position: absolute; height: 3px; width: 3px; bottom: -3px; left: -3px}
+.autogen_class_views_read2_errors_base .outer_page .b_t {background-image: url('https://s2-f.scribdassets.com/images/newdoc/page_border/t.png?1425075658'); background-repeat: repeat-x; position: absolute; height: 3px; top: -3px; left: 0px; right: 0px}
+.autogen_class_views_read2_errors_base .outer_page .b_r {background-image: url('https://s2-f.scribdassets.com/images/newdoc/page_border/r.png?1425075658'); background-repeat: repeat-y; position: absolute; width: 3px; right: -3px; top: 0px; bottom: 0px}
+.autogen_class_views_read2_errors_base .outer_page .b_b {background-image: url('https://s2-f.scribdassets.com/images/newdoc/page_border/b.png?1425075658'); background-repeat: repeat-x; position: absolute; height: 3px; bottom: -3px; left: 0px; right: 0px}
+.autogen_class_views_read2_errors_base .outer_page .b_l {background-image: url('https://s1-f.scribdassets.com/images/newdoc/page_border/l.png?1425075658'); background-repeat: repeat-y; position: absolute; width: 3px; left: -3px; top: 0px; bottom: 0px}
+
+
+/* app/views/read2/_footer_documents.css @ 1425075610 */
+.footer_documents {margin: 100px 0px 0 0px}
+.footer_documents .carousel, .footer_documents .carousel_title {margin-left: 40px; margin-right: 40px}
+.footer_documents .module_edge_right {right: 40px}
+.footer_documents .has_paddles .page_left {left: 0}
+.footer_documents .has_paddles .page_right {right: 0}
+
+
+/* app/views/read2/_info.css @ 1425075610 */
+.doc_info {overflow: hidden; white-space: normal; padding: 25px 40px 0 40px; border-bottom: 1px solid #e1e1e1; margin-bottom: 40px}
+.doc_info.open .info_columns, .doc_info.open .doc_tools, .doc_info.open .doc_description_long, .doc_info.open .less_holder {display: block}
+.doc_info.open .more_holder, .doc_info.open .doc_description_short {display: none}
+.doc_info .info_columns, .doc_info .doc_tools, .doc_info .doc_description_long, .doc_info .less_holder {display: none}
+.overlay_panel .doc_info {border-bottom: 0; margin: 0; padding: 34px 10px 34px 34px; overflow: hidden}
+.overlay_panel .doc_info .doc_tools, .overlay_panel .doc_info .toggle_open_btn, .overlay_panel .doc_info .doc_publisher, .overlay_panel .doc_info .doc_description, .overlay_panel .doc_info .info_columns, .overlay_panel .doc_info .doc_tags {display: none}
+.overlay_panel .doc_info .doc_stats {margin-bottom: 0; margin-left: 153px}
+.overlay_panel .doc_info .doc_title {margin-right: 30px; margin-left: 153px; font-size: 38px}
+.overlay_panel .doc_info .doc_authors {margin-left: 153px}
+.overlay_panel .doc_info .doc_thumb {float: left; display: block; box-shadow: 0 0 20px rgba(0, 0, 0, 0.1)}
+.doc_info .doc_title {margin: 0 200px 0 0; word-wrap: break-word; color: #333}
+.doc_info .doc_title .edit_btn {margin-left: 8px; font-size: 16px; font-family: Sofia Pro, sans-serif}
+.doc_info .doc_authors {margin: 8px 0 24px 0; font-size: 28px; font-weight: 200; word-wrap: break-word; color: #666666}
+.doc_info .verified_badge {display: inline-block; zoom: 1; *display: inline; background: url('https://s1-f.scribdassets.com/images/newhome/icon-sprite.png?1425075658') 0 0 no-repeat; background-position: -209px -339px; margin-right: 5px; margin-bottom: 5px; height: 15px; width: 15px; vertical-align: middle}
+.doc_info .verified_badge.publisher {margin-right: 3px; margin-bottom: 3px}
+.doc_info .doc_publisher, .doc_info .doc_description {word-wrap: break-word}
+.doc_info .doc_thumb {width: 126px; height: 163px; display: none}
+.doc_info .doc_publisher {margin-top: 24px}
+.doc_info .doc_description {margin-top: 24px; line-height: 1.5; word-wrap: break-word}
+.doc_info .doc_description_short {max-height: 72px; overflow: hidden}
+.doc_info .doc_stats {margin-top: 8px}
+.doc_info .doc_stats .doc_rating {margin-left: 4px; color: #E6E6E6; position: relative}
+.doc_info .doc_stats .doc_rating .rating_active {color: #072F3F; position: absolute; overflow: hidden; top: 0; left: 0; bottom: 0}
+.doc_info .doc_stats .stat_divider {margin: 0 20px}
+.doc_info .meta_label {margin-right: 4px}
+.doc_info .meta_value {margin-right: 10px}
+.doc_info .doc_tools {margin: 30px 0 0 0}
+.doc_info .doc_tools .tool_divider {margin: 0 8px}
+.doc_info .toggle_info_btn {color: #1a7bba; float: right; cursor: pointer; font-size: 13px}
+.doc_info .toggle_info_btn .icon {vertical-align: middle; margin-right: 4px}
+.doc_info .toggle_info_btn:hover {color: #1d8ad0}
+.doc_info .info_columns {margin-top: 28px}
+.doc_info .info_column {display: inline-block; zoom: 1; *display: inline; vertical-align: top; width: 50%; line-height: 1.5}
+.doc_info .info_column.left_column .meta_row {margin-right: 20px}
+.doc_info .info_column h3 {margin: 0 0 6px 0; font-size: 14px; color: #444444; font-weight: bold}
+.doc_info .more_holder, .doc_info .less_holder {cursor: pointer; color: #1a7bba; margin: 28px 0}
+.doc_info .more_holder:hover, .doc_info .less_holder:hover {color: #6ac6e2}
+.doc_info .icon-down_arrow {font-size: 12px; margin-left: 5px}
+
+
+/* app/views/read2/notifications/_feedback_notification.css @ 1425075610 */
+.feedback_notification a {text-decoration: underline}
+
+
+/* app/views/read2/_overlay_panel.css @ 1425075610 */
+.overlay_panel {position: fixed; background: white; border-left: 1px solid #e9e9e9; box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); text-align: left; z-index: 9; display: none; width: 500px; top: 50px; bottom: 0; right: 0}
+.overlay_panel .nano {position: absolute; bottom: 0px; left: 0; right: 0; top: 50px; height: auto}
+.overlay_panel .nano .pane {left: 0px; top: 5px; bottom: 5px; right: auto; padding-left: 5px; background: none; width: 10px}
+.overlay_panel .nano .pane:hover .slider, .overlay_panel .nano .pane.active .slider {width: 8px}
+.overlay_panel .nano .slider {-webkit-transition: width 0.1s ease-in-out; -moz-transition: width 0.1s ease-in-out; -ms-transition: width 0.1s ease-in-out; transition: width 0.1s ease-in-out; margin: 0; background: #c9d3d7; width: 5px}
+.overlay_panel_shroud {-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=0)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0); opacity: 0; -webkit-transition: opacity 0.2s ease-in-out; -moz-transition: opacity 0.2s ease-in-out; -ms-transition: opacity 0.2s ease-in-out; transition: opacity 0.2s ease-in-out; z-index: 9; background: black; position: fixed; display: none; top: 0; bottom: 0; left: 0; right: 0}
+.overlay_panel_shroud.visible {-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=50)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50); opacity: 0.5}
+
+
+/* app/views/read2/_page_blur_promo.css @ 1425075610 */
+.autogen_class_views_read2_page_blur_promo {width: 100%; height: 100%; display: none; position: absolute; top: 0}
+.autogen_class_views_read2_page_blur_promo .page-blur-promo-overlay {background-color: #fff; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=96)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=96); opacity: 0.96}
+.autogen_class_views_read2_page_blur_promo .page-blur-promo {border: 1px solid #d4d4d4; background: #f3f3f3; position: absolute; top: 40%; left: 50%; width: 270px; padding: 20px; margin-left: -145px; box-shadow: 0 0 7px rgba(0, 0, 0, 0.1); text-align: center}
+.autogen_class_views_read2_page_blur_promo .page-blur-promo h2 {font-size: 18px; margin: 0 0 15px 0}
+.autogen_class_views_read2_page_blur_promo .page-blur-promo p {font-size: 14px; margin: 0}
+.autogen_class_views_read2_page_blur_promo .page-blur-promo .flat_btn {margin-top: 15px; display: block}
+
+
+/* app/views/read2/popups/_popup.css @ 1425075610 */
+.toolbar_popup {position: absolute; display: none; z-index: 2; left: 0; top: 0; background: white; min-width: 100px; box-shadow: 0 0 8px rgba(0, 0, 0, 0.5); margin-left: -20px; margin-top: 13px; border-radius: 2px}
+.ie8 .toolbar_popup, .ie7 .toolbar_popup, .ie6 .toolbar_popup {border: 1px solid silver}
+.toolbar_popup.is_open {display: block}
+.toolbar_popup.align_right {margin-left: 20px}
+.toolbar_popup.align_right .popup_arrow {position: absolute; left: auto; right: 10px}
+.toolbar_popup .popup_arrow {position: absolute; top: -11px; left: 10px}
+.toolbar_popup .close_btn {position: absolute; cursor: pointer; top: 0px; right: 5px; font-weight: bold; color: #C2C2C2; font-size: 18px}
+.toolbar_popup .close_btn:hover {color: darkgrey}
+
+
+/* app/views/read2/popups/_commenting_popup.css @ 1425075610 */
+.commenting_popup.comment_posted .comment_area {display: none}
+.commenting_popup.comment_posted .comment_success {display: block}
+.commenting_popup .comment_success {display: none}
+.commenting_popup .comment_area {margin: 20px; white-space: nowrap}
+.commenting_popup .comment_area .comment_input {width: 140px; margin-right: 8px; width: 190px}
+.commenting_popup .comment_area .comment_preview {white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding: 0 10px; display: none; background: #eee}
+
+
+/* app/views/read2/popups/_readcast_popup.css @ 1425075610 */
+.readcaster_popup {width: 360px}
+.readcaster_popup h3, .readcaster_popup p {margin-left: 20px; margin-right: 20px}
+.readcaster_popup .readcasting {text-align: center; margin: 20px 0}
+.readcaster_popup .readcasting .loader {margin-right: 10px; display: inline-block; zoom: 1; *display: inline}
+.readcaster_popup .comment_success .add_another_btn {display: none}
+.readcaster_popup .comment_success p {box-sizing: border-box; -moz-box-sizing: border-box; border: 1px solid #e1e1e1; text-align: center; height: 45px; line-height: 45px}
+.readcaster_popup .readcast_success, .readcaster_popup .readcast_canceled, .readcaster_popup .footer_menu {display: none}
+.readcaster_popup.canceled .readcasting, .readcaster_popup.canceled .readcast_success {display: none}
+.readcaster_popup.canceled .readcast_canceled, .readcaster_popup.canceled .footer_menu {display: block}
+.readcaster_popup.success .readcasting, .readcaster_popup.success .readcast_canceled {display: none}
+.readcaster_popup.success .readcast_success, .readcaster_popup.success .footer_menu {display: block}
+.readcaster_popup .readcast_total {margin-top: 24px}
+.readcaster_popup .readcast_success .sprite, .readcaster_popup .readcast_canceled .sprite {margin-right: 8px}
+.readcaster_popup .footer_menu {color: #666666; font-size: 14px; margin: 20px; overflow: hidden}
+.readcaster_popup .footer_menu a {color: #999}
+.readcaster_popup .footer_menu .toggle_share_btn:hover {text-decoration: none}
+.readcaster_popup .footer_menu .toggle_share_btn:hover .label {text-decoration: underline}
+.readcaster_popup .footer_menu .toggle_share_btn.enabled .on_label {display: inline}
+.readcaster_popup .footer_menu .toggle_share_btn.enabled .off_label {display: none}
+.readcaster_popup .footer_menu .toggle_share_btn .on_label {display: none}
+.readcaster_popup .footer_menu .toggle_share_btn .icon {font-size: 6px; margin-right: 4px; color: #ccc; vertical-align: middle}
+.readcaster_popup .footer_menu .misc_tools {text-align: right; margin-top: 10px}
+.readcaster_popup .readcast_canceled p {color: #666666}
+
+
+/* app/views/read2/popups/_saved_popup.css @ 1425075610 */
+.saved_popup {width: 318px}
+.saved_popup.success .saving {display: none}
+.saved_popup.success .saved {display: block}
+.saved_popup .saving {text-align: center; margin: 20px 0}
+.saved_popup .saving .loader {margin-right: 10px; display: inline-block; zoom: 1; *display: inline}
+.saved_popup .saved {display: none}
+.saved_popup .saved h3, .saved_popup .saved p {margin-left: 20px; margin-right: 20px}
+.saved_popup .saved h3 {margin-bottom: 15px}
+.saved_popup .saved p {color: #666666}
+
+
+/* app/views/read2/popups/_share_popup.css @ 1425075610 */
+.share_popup {text-align: center; min-width: 340px}
+.share_popup .popup_content {margin: 10px}
+.share_popup .social_buttons {white-space: nowrap}
+.share_popup .social_button {display: inline-block; zoom: 1; *display: inline; vertical-align: top; margin: 0 10px; white-space: normal}
+.share_popup .social_button.facebook {position: relative; min-width: 80px; min-height: 22px; overflow: hidden; text-align: left}
+.share_popup h3 {color: #022f40; margin: 0 0 20px 0; font-size: 16px; font-weight: normal}
+.share_popup .embed_btn {display: inline-block; zoom: 1; *display: inline; -moz-user-select: -moz-none; -webkit-user-select: none; user-select: none; vertical-align: top; margin: 0 10px; cursor: pointer; height: 18px; line-height: 18px; padding: 0 10px; background: #F0F0F0; border: 1px solid #c1c1c1; border-radius: 2px; font-size: 12px}
+.share_popup .embed_btn .icon {position: relative; top: 1px; vertical-align: top; margin-right: 5px}
+.share_popup .embed_btn:hover {background: whitesmoke}
+.share_popup .embed_btn:active {background: #ebebeb}
+
+
+/* app/views/read2/_seo_banner.css @ 1425075610 */
+.seo_banner {width: 100%; padding: 32px 0; height: 297px; background-image: url('https://s2-f.scribdassets.com/images/read2/seo_background.png?1425075658'); background-size: cover; background-position: 100% 15%; text-align: left; position: relative; box-sizing: border-box; -moz-box-sizing: border-box}
+.seo_banner .toggle_banner_btn {position: absolute; top: 15px; right: 15px; text-transform: uppercase}
+.seo_banner .toggle_banner_btn span {display: inline-block; zoom: 1; *display: inline; font-size: 12px; font-weight: bold; line-height: 20px; vertical-align: middle}
+.seo_banner .toggle_banner_btn .close {-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=100)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100); opacity: 1; color: #666666}
+.seo_banner .toggle_banner_btn .icon {margin-left: 8px; width: 20px; height: 20px; background-image: url('https://s1-f.scribdassets.com/images/read2/icn_openclose.png?1425075658'); background-position: 20px 0px}
+.seo_banner .toggle_banner_btn:hover {cursor: pointer}
+.seo_banner .toggle_banner_btn:hover .close {color: #cccccc}
+.seo_banner .toggle_banner_btn:hover .icon {background-position: 20px 20px}
+.seo_banner.collapsed {height: 109px}
+.seo_banner.collapsed .toggle_banner_btn .icon {background-position: 0px 0px}
+.seo_banner.collapsed .toggle_banner_btn .close {-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=0)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0); opacity: 0}
+.seo_banner.collapsed .toggle_banner_btn:hover .icon {background-position: 0px 20px}
+.seo_banner.collapsed .hide_if_collapsed {-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=0)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0); opacity: 0}
+.seo_banner.stuck {position: fixed; bottom: 0; z-index: 8; -webkit-transition: all 1s ease-in-out; -moz-transition: all 1s ease-in-out; -ms-transition: all 1s ease-in-out; transition: all 1s ease-in-out}
+.seo_banner.stuck .toggle_banner_btn .close {-webkit-transition: opacity 1s; -moz-transition: opacity 1s; -ms-transition: opacity 1s; transition: opacity 1s}
+.seo_banner.bottomed {-webkit-transition: none; -moz-transition: none; -ms-transition: none; transition: none}
+.seo_banner .message_area {width: auto; height: 45px; max-height: none; float: none; font-weight: normal; line-height: 45px; margin: 0 48px}
+.seo_banner .message_area > * {display: inline-block; zoom: 1; *display: inline; vertical-align: middle}
+.seo_banner .message_area h1 {width: auto; font-weight: 200; font-size: 36px; line-height: 45px; margin: 0}
+.seo_banner .message_area .start_month_btn {margin-left: 32px; margin-right: 16px}
+.seo_banner .message_area .fine_print {font-size: 12px; line-height: 14px; height: 24px; color: #666666}
+.seo_banner .message_area .fine_print span {display: block}
+.seo_banner .hide_if_collapsed {display: block; margin-bottom: 32px; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=100)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100); opacity: 1; -webkit-transition: opacity 1s ease-in-out; -moz-transition: opacity 1s ease-in-out; -ms-transition: opacity 1s ease-in-out; transition: opacity 1s ease-in-out}
+.seo_banner .hide_if_collapsed .seo_images {padding: 32px 0px 32px 16px}
+
+
+/* app/views/read2/_seo_lightbox.css @ 1425075610 */
+.autogen_class_views_read2_seo_lightbox #seo_roadblock_lb {border-radius: 2px}
+.autogen_class_views_read2_seo_lightbox #seo_roadblock_lb .wrapper {border-radius: 2px}
+.autogen_class_views_read2_seo_lightbox #seo_roadblock_lb .content {padding: 0; text-align: center; padding-top: 80px; padding-bottom: 35px; background-image: url('https://s2-f.scribdassets.com/images/read2/seo_background.png?1425075658'); background-size: cover}
+.autogen_class_views_read2_seo_lightbox #seo_roadblock_lb h1 {font-size: 72px; font-weight: 200; margin: 0}
+.autogen_class_views_read2_seo_lightbox #seo_roadblock_lb h2 {font-size: 36px; font-weight: 200; margin: 0; margin-bottom: 20px}
+.autogen_class_views_read2_seo_lightbox #seo_roadblock_lb .start_month_btn {margin-bottom: 28px}
+.autogen_class_views_read2_seo_lightbox #seo_roadblock_lb .overlay {background: #fff}
+.autogen_class_views_read2_seo_lightbox #seo_roadblock_lb .seo_images {padding: 28px 20px 40px 20px; margin: 0; width: 880px}
+.autogen_class_views_read2_seo_lightbox #seo_roadblock_lb .seo_images .thumb {margin-right: 20px}
+.autogen_class_views_read2_seo_lightbox #seo_roadblock_lb .seo_images .thumb:last-child {margin-right: 0}
+.autogen_class_views_read2_seo_lightbox #seo_roadblock_lb .seo_quotes {padding-bottom: 40px}
+.autogen_class_views_read2_seo_lightbox #seo_roadblock_lb .seo_quotes .quote_body {width: 70%}
+.autogen_class_views_read2_seo_lightbox #seo_roadblock_lb .seo_perks {font-weight: bold; text-transform: uppercase; color: #666; padding: 23px 0; margin: 0}
+.autogen_class_views_read2_seo_lightbox #seo_roadblock_lb .devices {background: url('https://s1-f.scribdassets.com/images/payments/icons.png?1425075658') center center no-repeat; width: 190px; height: 21px; margin: 0 auto}
+
+
+/* app/views/read2/show.css @ 1425075610 */
+.doc_page {position: relative; border-bottom: 1px solid #e1e1e1}
+.buy_disabled .doc_page .buy_document_promo, .buy_disabled .doc_page .buy_doc_btn, .buy_disabled .doc_page .missing_page_buy_button, .buy_disabled .doc_page .also_buy {display: none}
+.buy_disabled .doc_page .geo_restricted {display: block}
+.pmp_disabled .doc_page .premium_signup_btn, .pmp_disabled .doc_page .subscribe_pmp_promo, .pmp_disabled .doc_page .missing_page_buy_button {display: none}
+.pmp_disabled .doc_page .geo_restricted {display: block}
+.buy_hidden .doc_page .buy_document_promo {display: none}
+.doc_page .carousel .document_cell:not(.is_geo_restricted) .geo_restricted {display: none}
+.doc_page.w1111 .outer_page_container {margin-left: 0; margin-right: 0}
+.doc_page.w1111 .sidebar_documents {margin-left: 10px}
+.doc_page.w1111 .doc_sidebar .ad_sidebar {margin-left: 0}
+.doc_page.w1111 .doc_sidebar .sticky_area {margin-left: 0}
+.doc_page.w1111 .doc_container {margin-left: 0; border-left: 0}
+.doc_page.sidebar_hidden .doc_sidebar {display: none}
+.doc_page.sidebar_hidden .doc_container {margin-left: 0; border-left: 0}
+.doc_page .doc_page_column {text-align: left; white-space: nowrap}
+.doc_page .doc_container, .doc_page .doc_sidebar {display: inline-block; zoom: 1; *display: inline; vertical-align: top; white-space: normal}
+.doc_page .doc_container {-webkit-transition: width 0.1s ease-in-out; -moz-transition: width 0.1s ease-in-out; -ms-transition: width 0.1s ease-in-out; transition: width 0.1s ease-in-out; background: white; border-right: 1px solid #e1e1e1; border-left: 1px solid #e1e1e1; margin-left: 40px; overflow: hidden}
+.doc_page .outer_page {margin: 0 auto 100px auto}
+.doc_page .outer_page.between_page_module {margin-left: 40px; margin-right: 40px}
+.doc_page .b_tl {margin-left: -100px; position: absolute; bottom: -48px; left: 50%; width: 200px; height: 1px; background: #dbdbdb}
+.doc_page .b_tr {margin-left: -80px; position: absolute; bottom: -52px; left: 50%; width: 160px; height: 1px; background: #efefef}
+.doc_page .b_br, .doc_page .b_bl, .doc_page .b_t, .doc_page .b_r, .doc_page .b_l, .doc_page .b_b {display: none}
+.doc_page .reading_mode_bar {top: 0; left: 0; right: 0; height: 50px; line-height: 50px; background: #F4F3F3; box-shadow: 0 3px 0 rgba(0, 0, 0, 0.15), inset 0 -1px 0 #f8f8f8; position: fixed; display: none; z-index: 12; text-align: center; color: #838383; font-size: 14px; font-weight: 200}
+.doc_page .reading_mode_bar .page_info {height: 50px; line-height: 50px; margin-top: 2px; position: absolute; top: 0; right: 10px}
+.doc_page .reading_mode_bar .inner_text {white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 2px; position: absolute; left: 80px; right: 80px; top: 0; bottom: 0}
+.doc_page .scrolling {max-height: 200px; overflow-y: auto; overflow-x: hidden}
+.doc_page .scrolling::-webkit-scrollbar {width: 6px}
+.doc_page .scrolling::-webkit-scrollbar-track {background: #D6D6D6; border-radius: 4px}
+.doc_page .scrolling::-webkit-scrollbar-thumb {background: #114E64; border-radius: 4px}
+.doc_page .scrolling::-webkit-scrollbar-thumb:hover {background: #187090}
+.doc_page .has_table_of_contents h2 {color: #022f40; font-weight: normal; font-size: 18px}
+.doc_page .has_table_of_contents h2 .icon {margin-right: 10px; vertical-align: middle}
+.doc_page .has_table_of_contents .section_list .section_row {display: block; font-size: 13px; line-height: 16px; margin: 0 10px 6px 0}
+.doc_page .has_table_of_contents .section_list .section_row.disabled_row {color: #aaa}
+.doc_page .has_table_of_contents .section_list .section_row a {color: #444}
+.doc_page .has_table_of_contents .section_list .section_row a:hover {color: #1a7bba; text-decoration: none}
+.doc_page .themed_header {background-position: 50% 50%; min-height: 112px}
+.doc_page .themed_header.has_image_map {overflow: hidden}
+.doc_page .themed_header.has_image_map img {display: block; margin: 0 auto}
+.doc_page .leader_ad_container {padding: 16px 0; border-bottom: 1px solid #f3f3f3; background: #F9F9F7}
+.doc_page .banner_spacer {height: 125px}
+.doc_page .seo_banner_spacer {height: 325px}
+
+
+/* app/views/read2/show_bot.css @ 1425075610 */
+.autogen_class_views_read2_show_bot .html_text {margin: 40px}
+.autogen_class_views_read2_show_bot .sections {text-align: left; font-size: 11px; font-family: Arial; margin-bottom: 15px; padding-bottom: 10px}
+.autogen_class_views_read2_show_bot .sections ul {padding: 7px}
+.autogen_class_views_read2_show_bot .sections li {font-size: 11px; padding-bottom: 5px; margin-left: 14px; list-style-type: square; list-style-position: outside; color: #aaaaaa; white-space: normal}
+
+
+/* app/views/read2/_sidebar.css @ 1425075610 */
+.doc_sidebar {position: relative; -webkit-transition: margin-top 0.25s ease-in-out; -moz-transition: margin-top 0.25s ease-in-out; -ms-transition: margin-top 0.25s ease-in-out; transition: margin-top 0.25s ease-in-out}
+.doc_sidebar .sticky_area.stuck {position: fixed; top: 52px}
+.doc_sidebar .sticky_area.bottomed {position: absolute}
+.doc_sidebar .ad_sidebar {margin: 20px 0 20px 20px}
+.doc_sidebar .document_admin_panel {width: 249px; margin: 20px 0px 0 35px}
+
+
+/* app/views/read2/sidebar/_admin.css @ 1425075610 */
+.document_admin_panel {text-align: left; padding: 8px; margin-bottom: 8px; background: #F4EEF4; border: 1px solid #af89af; border-radius: 2px}
+.document_admin_panel h3 {margin: 0px; font-size: 18px}
+.document_admin_panel .visible_when_open {display: none}
+.document_admin_panel.open .visible_when_open {display: inline}
+.document_admin_panel.open .visible_when_closed {display: none}
+.document_admin_panel .toggle_admin_btn img {vertical-align: middle}
+.document_admin_panel a {display: inline-block; margin-right: 10px}
+.document_admin_panel a.disabled {color: black; cursor: default}
+
+
+/* app/views/read2/sidebar/_document_list.css @ 1425075610 */
+.sidebar_documents {margin-left: 35px; margin-bottom: 20px; width: 280px}
+.sidebar_documents h2 {margin: 24px 0}
+.sidebar_documents.first_page .prev_page_btn, .sidebar_documents.last_page .next_page_btn {color: #e1e1e1; cursor: default}
+.sidebar_documents.first_page .prev_page_btn:hover, .sidebar_documents.last_page .next_page_btn:hover {text-decoration: none}
+.sidebar_documents .document_list_pager {margin-top: 20px}
+.sidebar_documents .page_label {color: #666}
+.sidebar_documents .vert_divider {color: #999; margin: 0 10px}
+.sidebar_documents .pager_links {float: right; -moz-user-select: -moz-none; -webkit-user-select: none; user-select: none}
+.sidebar_documents .sidebar_doc {zoom: 1; margin-bottom: 20px}
+.sidebar_documents .sidebar_doc:after {content: ""; display: table; clear: both}
+.sidebar_documents .sidebar_doc .doc_content {margin-left: 135px}
+.sidebar_documents .sidebar_doc p {margin-top: 5px; word-wrap: break-word; font-size: 14px}
+.sidebar_documents .sidebar_doc .doc_author a {color: #999999}
+.sidebar_documents .sidebar_doc .doc_title, .sidebar_documents .sidebar_doc .doc_author {word-wrap: break-word}
+.sidebar_documents .sidebar_doc .thumb {background: white; float: left; width: 120px; height: 164px; margin-right: 15px; box-shadow: 0 0 20px rgba(0, 0, 0, 0.1)}
+
+
+/* app/views/read2/sidebar/_downloader.css @ 1425075610 */
+.sidebar_downloader {background: #FAFAFA; border-bottom: 1px solid #e1e1e1}
+.sidebar_downloader .downloader_wrapper {padding: 25px 35px; width: 270px}
+.sidebar_downloader.is_short {margin: 0; width: auto}
+.sidebar_downloader.is_short .feature_list {display: none}
+.sidebar_downloader.is_short .hidable {display: none}
+.sidebar_downloader.is_short h2, .sidebar_downloader.is_short h3 {display: none}
+.sidebar_downloader.is_short .format_list {display: inline-block; zoom: 1; *display: inline; vertical-align: middle; margin: 0}
+.sidebar_downloader.is_short .format_download_btn {display: inline-block; zoom: 1; *display: inline; margin-left: 10px}
+.sidebar_downloader.is_short .downloader_wrapper {padding-left: 10px; padding-right: 0; width: 330px; white-space: nowrap}
+.sidebar_downloader .format_download_btn {display: block}
+.sidebar_downloader h2 {font-size: 32px; margin: 0}
+.sidebar_downloader .feature_list {font-size: 16px; line-height: 22px; margin: 15px 0; padding-left: 20px; list-style-image: url('https://s1-f.scribdassets.com/images/shared/pmp_promo_banner/checkmark-dark.png?1425075658')}
+.sidebar_downloader h3 {font-size: 16px; line-height: 22px; font-weight: normal; margin: 25px 0 10px 0}
+.sidebar_downloader .format_list {margin-bottom: 15px; margin-right: 10px}
+.sidebar_downloader .format_list label {display: inline; font-size: 14px; padding: 5px}
+.sidebar_downloader .format_list label.hidable {display: none}
+.sidebar_downloader .format_list label input, .sidebar_downloader .format_list label img {vertical-align: middle}
+.sidebar_downloader .format_list label img {margin: 0 5px}
+
+
+/* app/views/read2/sidebar/_find_panel.css @ 1425075610 */
+.toolbar_find_panel {min-width: 330px}
+.toolbar_find_panel.open {border-bottom: 1px solid #e9e9e9; padding-bottom: 20px}
+.toolbar_find_panel.has_results .search_results {display: block}
+.toolbar_find_panel.empty_results .search_results .empty_message {display: block}
+.toolbar_find_panel .input_wrapper {margin: 25px 0 13px 20px; position: relative; display: inline-block; zoom: 1; *display: inline}
+.toolbar_find_panel .input_wrapper .icon-searchbox, .toolbar_find_panel .input_wrapper .loader {position: absolute; top: 7px; right: 6px; float: right; color: #999; font-size: 17px}
+.toolbar_find_panel input.find_input {background: white; border: 1px solid #e0e0e0; font-size: 13px; color: #666; border-radius: 3px; width: 230px; padding: 6px 30px 7px 10px}
+.toolbar_find_panel input.find_input:focus {outline: none; border: 1px solid lightgrey}
+.toolbar_find_panel .icon-close {color: #E6E6E6; font-size: 18px; vertical-align: middle; margin-left: 17px}
+.toolbar_find_panel .icon-close:hover {color: #cdcdcd}
+.toolbar_find_panel .sections {margin-left: 25px; margin-right: 10px}
+.toolbar_find_panel .sections h2 {color: #022f40; font-weight: normal; font-size: 18px}
+.toolbar_find_panel .sections h2 .icon {margin-right: 10px; vertical-align: middle}
+.toolbar_find_panel .search_results {border-top: 1px solid #e9e9e9; border-bottom: 1px solid #e9e9e9; background: white; margin: 13px 0; display: none}
+.toolbar_find_panel .search_results p {margin: 10px 20px}
+.toolbar_find_panel .search_results .results_inner {width: 325px}
+.toolbar_find_panel .results_header {margin: 25px 0 25px 25px; font-size: 18px; color: #666}
+.toolbar_find_panel .results_header .results_count {float: right}
+.toolbar_find_panel .results_header .results_count .decor_or {display: inline-block; zoom: 1; *display: inline; margin: 0 5px; vertical-align: bottom; text-transform: uppercase; font-size: 12px; position: relative; top: -3px}
+.toolbar_find_panel .results_header .search_query {color: #022f40}
+.toolbar_find_panel .results_list {margin: 30px 0}
+.toolbar_find_panel .search_result {margin: 0 10px 0 15px; padding: 10px 14px; color: #999; cursor: pointer}
+.toolbar_find_panel .search_result.active {color: #666}
+.toolbar_find_panel .search_result:hover {background-color: #E3EEF1; border-radius: 3px; color: #146c88}
+.toolbar_find_panel .search_result:hover .search_result_text {color: #146c88}
+.toolbar_find_panel .search_result .search_result_page {float: right}
+.toolbar_find_panel .search_result .search_result_text {overflow: hidden; margin-right: 45px}
+.toolbar_find_panel .empty_message {display: none; margin: 20px 25px; color: #666}
+.toolbar_find_panel .clear_search_btn {cursor: pointer}
+.toolbar_find_panel .search_form.loading .icon-searchbox {display: none}
+.toolbar_find_panel .search_form.loading .loader {display: block}
+
+
+/* app/views/read2/store/_bought.css @ 1425075610 */
+.autogen_class_views_read2_store_bought {border-bottom: 1px solid #e9e9e9}
+.autogen_class_views_read2_store_bought .bought_wrapper {padding: 25px 35px; width: 270px}
+.autogen_class_views_read2_store_bought h2 {font-size: 22px; color: #022F40; margin: 0}
+.autogen_class_views_read2_store_bought p {font-size: 14px; color: #666}
+
+
+/* app/views/read2/_toolbar.css @ 1425075610 */
+.doc_toolbar {background: #f4f3f3; text-align: right; white-space: nowrap; box-shadow: 0 3px 0 rgba(0, 0, 0, 0.15), inset 0 -1px 0 #f8f8f8; z-index: 10; position: relative}
+.ie8 .doc_toolbar, .ie7 .doc_toolbar, .ie6 .doc_toolbar {border-bottom: 1px solid #e9e9e9}
+.doc_toolbar.no_find_panel .find_btn {display: none}
+.doc_toolbar.show_labels .icon {margin-right: 4px}
+.doc_toolbar.show_labels .icon_label {display: inline}
+.doc_toolbar .doc_toolbar_inner {position: relative; height: 49px}
+.doc_toolbar .welcome_notification {display: none}
+.doc_toolbar .icon_label {display: none}
+.doc_toolbar .save_bookmark_btn.saved .icon, .doc_toolbar .save_bookmark_btn.liked .icon, .doc_toolbar .readcast_btn.saved .icon, .doc_toolbar .readcast_btn.liked .icon {color: #1a7bba}
+.doc_toolbar .save_bookmark_btn.saved.popup_active .icon, .doc_toolbar .save_bookmark_btn.liked.popup_active .icon, .doc_toolbar .readcast_btn.saved.popup_active .icon, .doc_toolbar .readcast_btn.liked.popup_active .icon {color: white}
+.doc_toolbar .toolbar_left_actions {position: absolute; top: 0; left: 45px}
+.doc_toolbar .primary_action_btn {margin: 10px 10px 0 0; min-width: 100px; height: 30px; line-height: 30px; font-size: 13px}
+.doc_toolbar .toolbar_buttons {display: inline-block; zoom: 1; *display: inline; vertical-align: top; margin-right: 18px}
+.doc_toolbar .toolbar_buttons .icon {font-size: 20px; vertical-align: middle}
+.doc_toolbar .zoomers {margin-right: 12px}
+.doc_toolbar .toolbar_button {display: inline-block; zoom: 1; *display: inline; -moz-user-select: -moz-none; -webkit-user-select: none; user-select: none; -webkit-transition: color 0.1s ease-in-out; -moz-transition: color 0.1s ease-in-out; -ms-transition: color 0.1s ease-in-out; transition: color 0.1s ease-in-out; width: 48px; text-align: center; padding-top: 14px; margin-right: 12px; color: #999999; height: 35px; font-size: 12px; cursor: pointer; text-transform: uppercase; vertical-align: top}
+.doc_toolbar .toolbar_button:hover {color: #1a7bba}
+.doc_toolbar .toolbar_button.no_hover {width: auto}
+.doc_toolbar .toolbar_button:active:not(.no_hover), .doc_toolbar .toolbar_button.popup_active, .doc_toolbar .toolbar_button.open {color: white; background-color: #1a7bba}
+.doc_toolbar .toolbar_button.zoom_in_btn, .doc_toolbar .toolbar_button.zoom_out_btn {width: auto; padding-top: 18px; height: 31px; margin-right: 0}
+.doc_toolbar .toolbar_button.zoom_in_btn .icon, .doc_toolbar .toolbar_button.zoom_out_btn .icon {font-size: 16px}
+.doc_toolbar .toolbar_button.zoom_in_btn:active, .doc_toolbar .toolbar_button.zoom_out_btn:active {color: #6ac6e2; background: none}
+.doc_toolbar .toolbar_button.disabled {color: #E6E6E6; cursor: default}
+.doc_toolbar .toolbar_button.disabled:hover, .doc_toolbar .toolbar_button.disabled:active {color: #E6E6E6; cursor: default}
+.doc_toolbar .toolbar_button.zoom_in_btn {padding-right: 8px; padding-left: 10px}
+.doc_toolbar .toolbar_button.zoom_out_btn {padding-right: 10px}
+.doc_toolbar .font_settings_btn {display: none}
+.doc_toolbar .my_library_button {display: inline-block; zoom: 1; *display: inline; vertical-align: top; margin-top: 10px}
+.doc_toolbar .my_library_button .button_wrapper {background-color: #999999}
+.doc_toolbar .my_library_button .button_wrapper:hover {background-color: #6ac6e2}
+.doc_toolbar .pager {display: inline-block; zoom: 1; *display: inline; margin-right: 12px; color: #C2C2C2; height: 31px; font-size: 12px; text-transform: uppercase; padding: 18px 10px 0 10px}
+.doc_toolbar .pager .current_value, .doc_toolbar .pager .total_value {color: #999999}
+.doc_toolbar .pager .current_value {background: #f4f3f3; border: 1px solid #cccccc; border-radius: 3px; padding: 0; margin: 0; width: 18px; text-align: center; font-size: 12px}
+.doc_toolbar .pager .current_value:focus {outline: none}
+.doc_toolbar .toolbar_panels {text-align: left}
+.doc_toolbar .toolbar_panels .toolbar_panel {display: none; background: #F9F9F7; box-shadow: inset 0 3px 0 rgba(0, 0, 0, 0.15); border-left: 1px solid #e9e9e9; position: absolute; overflow: hidden; -webkit-transition: height 0.25s ease-in-out; -moz-transition: height 0.25s ease-in-out; -ms-transition: height 0.25s ease-in-out; transition: height 0.25s ease-in-out}
+.doc_toolbar .toolbar_panels .toolbar_panel.disable_transition {-webkit-transition: none; -moz-transition: none; -ms-transition: none; transition: none}
+.doc_toolbar .toolbar_panels .toolbar_panel.open, .doc_toolbar .toolbar_panels .toolbar_panel.closing {display: block}
+.doc_toolbar .toolbar_popups, .doc_toolbar .toolbar_panels {text-align: left; white-space: normal}
+.doc_toolbar .toolbar_notification {box-shadow: inset 0 -1px 0 #ececec}
+.doc_toolbar .read_mode_toggle {display: inline-block; zoom: 1; *display: inline; vertical-align: top; margin-top: 10px}
+.doc_toolbar .read_mode_toggle .toggle_btn {display: inline-block; zoom: 1; *display: inline; -moz-user-select: -moz-none; -webkit-user-select: none; user-select: none; -webkit-transition: color 0.1s ease-in-out; -moz-transition: color 0.1s ease-in-out; -ms-transition: color 0.1s ease-in-out; transition: color 0.1s ease-in-out; height: 28px; line-height: 28px; vertical-align: top; color: #818181; font-size: 13px; font-weight: bold; text-transform: uppercase; border: 1px solid #cecece; padding: 0 13px; cursor: pointer}
+.doc_toolbar .read_mode_toggle .toggle_btn:hover {color: #1a7bba}
+.doc_toolbar .read_mode_toggle .toggle_btn:hover .book_icon {border-color: #1a7bba}
+.doc_toolbar .read_mode_toggle .toggle_btn.left_btn {border-radius: 3px 0 0 3px; border-right: 0}
+.doc_toolbar .read_mode_toggle .toggle_btn.right_btn {border-radius: 0 3px 3px 0; border-left: 0}
+.doc_toolbar .read_mode_toggle .toggle_btn.active {background: #818181; color: white; cursor: default; border-color: #818181}
+.doc_toolbar .read_mode_toggle .toggle_btn.active .book_icon {border-color: white}
+.doc_toolbar .read_mode_toggle .book_icon {display: inline-block; zoom: 1; *display: inline; vertical-align: middle; margin-right: 6px; height: 9px; width: 1px; margin-bottom: 3px}
+.doc_toolbar .read_mode_toggle .single_icon {border-left: 7px solid #838383}
+.doc_toolbar .read_mode_toggle .double_icon {width: 1px; border-left: 7px solid #838383; border-right: 7px solid #838383}
+.doc_toolbar .info_btn {position: relative}
+.doc_toolbar .info_btn:hover .activity_flag, .doc_toolbar .info_btn.open .activity_flag {background: #919191}
+.doc_toolbar .info_btn .activity_flag {-webkit-transition: background 0.1s ease-in-out; -moz-transition: background 0.1s ease-in-out; -ms-transition: background 0.1s ease-in-out; transition: background 0.1s ease-in-out; position: absolute; background: #1A6B87; font-size: 10px; color: white; padding: 1px 6px; border-radius: 8px; top: 7px; right: 0}
+.doc_toolbar .info_btn .activity_flag.has_none {display: none}
+
+
+/* app/views/word/deleted.css @ 1425075610 */
+.autogen_class_views_word_deleted h2 {margin: 40px 45px}

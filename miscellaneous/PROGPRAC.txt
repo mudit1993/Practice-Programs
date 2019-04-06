@@ -1,0 +1,224 @@
+REMISS:
+Chef is now a corporate person. He has to attend office regularly. But chef does not want to go to office, rather he wants to stay home and discover different recipes and cook them.
+In the office where chef works, has two guards who count how many times a person enters into the office building. 
+Though the duty of a guard is 24 hour in a day, but sometimes they fall asleep during their duty and could not track the entry of a person in the office building.
+But one better thing is that they never fall asleep at the same time.
+At least one of them remains awake and counts who enters into the office.
+Now boss of Chef wants to calculate how many times Chef has entered into the building. He asked to the guard and they give him two integers A and B, count of first guard and second guard respectively.
+Help the boss to count the minimum and maximum number of times Chef could have entered into the office building.
+Input
+
+The first line of the input contains an integer T denoting the number of test cases. The description of the T test cases follows.
+Each test case consists of a line containing two space separated integers A and B.
+Output
+
+For each test case, output a single line containing two space separated integers, the minimum and maximum number of times Chef could have entered into the office building.
+Constraints
+
+1 ≤ T ≤ 100
+0 ≤ A, B ≤ 1000000
+Example
+
+Input:
+1
+19 17
+
+Output:
+19 36
+
+
+
+PCYCLE:
+We consider permutations of the numbers 1,..., N
+for some N. By permutation we mean a rearrangment of the
+number 1,...,N. For example
+2  4  5  1  7  6  3  8
+is a permutation of 1,2,...,8. Of course,
+1  2  3  4  5  6  7  8
+is also a permutation of 1,2,...,8.
+We can "walk around" a permutation in a interesting way and here
+is how it is done for the permutation above:
+Start at position 1. At position 1 we have 2 and so we go to
+position 2. Here we find 4 and so we go to position 4. Here we find
+1, which is a position that we have already visited. This completes
+the first part of our walk and we denote this walk by (1 2 4 1). Such
+a walk is called a cycle. An interesting property of such
+walks, that you may take for granted, is that the position we revisit
+will always be the one we started from!
+We continue our walk by jumping to first unvisited position, in
+this case position 3 and continue in the same manner. This time we
+find 5 at position 3 and so we go to position 5 and find 7 and we go
+to position 7 and find 3 and thus we get the cycle (3 5 7 3). Next we
+start at position 6 and get (6 6) and finally we start at position 8
+and get the cycle (8 8). We have exhausted all the positions. Our
+walk through this permutation consists of 4 cycles.
+One can carry out this walk through any permutation and obtain a
+set of cycles as the result. Your task is to print out the cycles
+that result from walking through a given permutation.
+Input format
+The first line of the input is a positive integer N
+indicating the length of the permutation. The next line contains
+N integers and is a permutation of 1,2,...,N.
+You may assume that N ≤ 1000.
+Output format
+The first line of the output must contain a single integer
+k denoting the number of cycles in the permutation. Line 2
+should describe the first cycle, line 3 the second cycle and so on and
+line k+1 should describe the kth cycle.
+Examples
+Sample input 1:
+8
+2 4 5 1 7 6 3 8
+Sample output 1:
+4
+1 2 4 1
+3 5 7 3
+6 6
+8 8 
+Sample input 2:
+8
+1 2 3 4 5 6 7 8
+Sample output 2:
+8
+1 1
+2 2
+3 3
+4 4
+5 5
+6 6
+7 7
+8 8
+
+
+
+
+BUY1GET1:
+One day Alice visited Byteland to purchase jewels for her upcoming wedding anniversary.
+In Byteland, every Jewelry shop has their own discount methods to attract the customers. One discount method called Buy1-Get1 caught Alice's attention. That is, Alice buys one jewel, then she can get one additional jewel with the same color without charge by Buy1-Get1.
+Alice lists the needed jewels as a string S, each letter denotes one jewel, and the same letters denote the same colors of jewels, and the different letters denote the different colors of jewels. The cost of each jewel is 1. Your task is to calculate the minimum cost for getting all the jewels Alice listed.
+Input
+
+The first line of input contains a single line T, which represents the number of test cases. Then T lines will follow, and each contains a string S, which represents the jewels Alice needed.
+Output
+
+Output the minimum cost for each test case.
+Constraints
+
+1 ≤ T ≤ 100
+1 ≤ |S| ≤ 200, where |S| represents the length of the string S. 
+The string S is case sensitive, and will contain only English characters in the range [a-z], [A-Z].
+Sample
+
+Input:
+4
+ssss
+ssas
+sa
+s
+
+Output:
+2
+3
+2
+1
+Explanation
+
+In the first sample case, Alice needs 4 jewel of color s. One of the optimal way is the following:
+Buy the first s with cost 1, and she can get the second s without charge. Then buy the third s with cost 1, and she can get the last s without charge. In this case, she get 4 jewels with only cost 2.
+In the second sample case, Alice needs 3 jewels of color s and 1 jewel of color a. One of the optimal way is the following:
+Buy the second s with cost 1, and she can get the last s without charge. Then buy the a and the first s with cost 2. In this case, she get 4 jewels with only cost 3.
+In the third and fourth sample cases, she cannot save her money by using Buy1-Get1.
+
+
+
+
+
+
+FORGETPW:
+Chef changed the password of his laptop a few days ago, but he can't remember it today. Luckily, he wrote the encrypted password on a piece of paper, along with the rules for decryption.
+The encrypted password is a string S consists of ASCII printable characters except space (ASCII 33 - 126, in decimal notation, the same below). Read here for more details: ASCII printable characters.
+Each rule contains a pair of characters ci, pi, denoting that every character ci appears in the encrypted password should be replaced with pi. Notice that it is not allowed to do multiple replacements on a single position, see example case 1 for clarification.
+After all the character replacements, the string is guaranteed to be a positive decimal number. The shortest notation of this number is the real password. To get the shortest notation, we should delete all the unnecessary leading and trailing zeros. If the number contains only non-zero fractional part, the integral part should be omitted (the shortest notation of "0.5" is ".5"). If the number contains zero fractional part, the decimal point should be omitted as well (the shortest notation of "5.00" is "5").
+Please help Chef to find the real password.
+Input
+
+The first line of the input contains an interger T denoting the number of test cases.
+The description of T test cases follows.
+The first line of each test case contains a single interger N, denoting the number of rules.
+Each of the next N lines contains two space-separated characters ci and pi,
+denoting a rule.
+The next line contains a string S, denoting the encrypted password.
+Output
+
+For each test case, output a single line containing the real password.
+Constraints
+
+1 ≤ T ≤ 1000
+0 ≤ N ≤ 94
+All characters in S and ci may be any ASCII printable character except space. (ASCII 33 - 126)
+All ci in a single test case are distinct.
+pi is a digit ("0" - "9") or a decimal point "." (ASCII 46).
+The total length of S in a single input file will not exceed 106.
+Example
+
+Input:
+4
+2
+5 3
+3 1
+5
+0
+01800.00
+0
+0.00100
+3
+x 0
+d 3
+# .
+0xd21#dd098x
+
+Output:
+3
+1800
+.001
+321.33098
+
+
+
+
+LFEB14B:
+Sereja have an array that consist of n integers a[1], a[2], ..., a[n]. Now Sereja want to delete some(possible none, but not all) elements from the array, such that arithmetical mean of all remaining numbers will as big as possible.
+Help Sereja, find number of ways to delete numbers.
+Input
+
+First line contain integer T - number of testcases. T tests follow. First line of each testcase contain integer n. Next line contain n integers a[1], a[2], ..., a[n].
+ 
+Output
+
+For each testcase print the answer modulo 10^9+7.
+ 
+Constraints
+
+1 ≤ T ≤ 10
+1 ≤ n ≤ 10^5
+1 ≤ a[i] ≤ 10^5
+ 
+Example
+
+Input:
+2
+1
+1
+4
+1 2 1 2
+
+Output:
+1
+3
+
+ 
+Note
+
+Test #0-1(25 points) n ≤ 20
+Test #2(25 points) n ≤ 1000
+Test #3-4(50 points) n ≤ 100000

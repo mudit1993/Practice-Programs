@@ -1,0 +1,3 @@
+java -cp . Ex49
+---------------
+for running after compiling

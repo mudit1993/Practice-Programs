@@ -1,0 +1,9 @@
+
+ Start  Stop   Length Name               Class
+
+ 00000H 0003CH 0003DH X                  
+ 00040H 00071H 00032H Y                  
+
+Program entry point at 0004:0000
+Warning: No stack
+

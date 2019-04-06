@@ -1,0 +1,123 @@
+printstr MACRO a
+    PUSH DX
+    PUSH AX
+    MOV AH,09H
+    MOV DX,OFFSET a
+    INT 21H
+    POP AX
+    pop dx     
+ENDM      
+
+data segment
+  no dw      13,10,'Enter a number$'
+  find dw   13,10,'Enter a number to be found-$' 
+  size  dw   13,10,'Enter length of array$'     
+  yes dw    13,10,'Number Found!!$'
+  nope dw    13,10,'SORRY!Number Not Found!$'
+  arr dw 20 DUP(0)
+  count dw ?  
+  num dw ?
+     
+data ends    
+code segment
+  assume cs:code,ds:data
+  readnum proc
+      push ax    
+      push bx
+      push cx
+      mov cx,0
+      mov bx,10
+      mov dx,0
+      r1: mov ah,01h
+          int 21h
+          cmp al,13
+          je e1
+          sub al,48
+          mov cl,al
+          mov ax,dx
+          mul bx
+          add ax,cx
+          mov dx,ax
+          jmp r1
+      e1: pop cx
+          pop bx       
+          pop ax
+      ret
+  endp    
+  
+        
+      ;AX  contains the number 
+      printnum proc
+      
+      push bx
+      push cx
+      push dx
+      mov cx,0
+      mov bx,0ah
+      d1: mov dx,0
+          div bx
+          add dx,48
+          push dx
+          inc cx
+          cmp ax,10
+          jge d1
+          add ax,48
+          push ax
+          inc cx
+          mov ah,02h
+      p1: pop dx
+          int 21h
+          loop p1
+          pop dx
+          pop cx
+          pop bx
+                ret
+      endp     
+      
+      
+   start:  
+   mov ax,data
+   mov ds,ax     
+   
+   printstr size 
+   call readnum     
+   
+   mov count,dx ; size of the array
+   mov cx,dx    ; loop variable cx=length of the array    
+   
+   mov SI,0 
+   
+    mov bx,offset arr 
+   
+     ; POINTS TO THE START OF THE ARRAY  
+     
+l1:printstr no
+   call readnum
+   mov [bx][si],dx   ; store the input no. in the array
+   add si,2   ;increment the pointer by 2 bytes
+   loop l1        
+             
+        printstr find
+        call readnum
+       ; mov bx,dx  
+           
+ mov si,0 
+ 
+   mov bx,offset arr
+    
+ mov cx,count        ;size of the array
+l2: cmp dx,[bx][si]   ;comparing elements
+ je r                 ;if less then change
+ jmp noc  
+   
+r: printstr yes
+   jmp exit  
+noc: add si,2         ;increment
+     loop l2     
+     printstr nope
+        
+     
+ exit:      mov ah,4ch
+   int 21h
+   code ends
+   end start           

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<body>
+		<img id="image" src="img1.png" style="width:300px;"/>
+		<script>
+			var item = document.getElementById("image");
+			item.addEventListener("mouseover", func1, false);
+			item.addEventListener("mouseout", func2, false);
+			function func1()
+			{  
+			   item.setAttribute("src", "img2.png")
+			}
+			function func2()
+			{  
+			   item.setAttribute("src", "img1.png")
+			}
+		</script>
+	</body>
+</html>
